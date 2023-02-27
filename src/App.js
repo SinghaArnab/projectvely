@@ -7,12 +7,18 @@ import Category from './admin/pages/Category';
 import Dashboard from './admin/pages/Dashboard';
 import Projectlist from './admin/pages/Projectlist';
 import './App.css';
+import Home from './Frontend/pages/Home';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
+
+        <Route path='/Home' element={<Home/>}/>
+
+
+
           <Route path='/' element={<AdminLogin/>}/>
 
           <Route path='/Dashboard' element={<AdminNav/>}>

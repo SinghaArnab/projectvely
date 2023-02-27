@@ -21,7 +21,7 @@ const AdminNav = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
 
-                Dispatch(user.email)
+                Dispatch(singInUser(user.email))
             } else {
                 Navigate('/')
             }
