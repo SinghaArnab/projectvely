@@ -4,6 +4,9 @@ import { app } from '../../Firebase/FirebaseAuth'
 import { useSelector } from 'react-redux';
 import { getStorage, uploadBytes, ref } from "firebase/storage";
 import { v4 } from 'uuid'
+import { toast ,ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -51,7 +54,15 @@ const AddProjects = () => {
 
   const handelSubit = (e) => {
     e.preventDefault()
-    addQUestion(input)
+    addQUestion(input).then(() =>
+    toast.success('Project added Succesfully', {
+      position: toast.POSITION.TOP_RIGHT
+    }),
+    setInput({id:v4(),category:"",question:"",answer:""})
+  ).catch((error)=>
+  toast.error('Somthing went Wrong ! ', {
+    position: toast.POSITION.TOP_RIGHT
+  }))
 
   }
 
@@ -60,8 +71,9 @@ const AddProjects = () => {
 
     <div className='flex flex-col'>
       <section className='min-h-[8vh] bg-[#F8F9F9] flex justify-center items-center shadow-md shadow-black/20 dark:shadow-white/20 '>
-        <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl'>Add Projects</h1>
+        <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl'>Add Projects</h1>
       </section>
+      <ToastContainer />
       <div className='w-[100%] pb-10 lg:px-10 lg:py-5 flex justify-center items-center flex-col  bg-[#fcfcfc] '>
         <form action="" className="form bg-white p-6 my-10 relative sm:w-[50%]" onSubmit={handelSubit}>
 

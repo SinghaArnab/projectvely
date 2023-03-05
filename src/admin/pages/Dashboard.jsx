@@ -3,6 +3,7 @@ import { getFirestore, collection, getDocs } from "firebase/firestore";
 import { app } from '../../Firebase/FirebaseAuth';
 import { Totalprojectsgraph } from '../components/TotalProjectsgraph'
 import Piechart from "../components/Piechart";
+import { ToastContainer } from "react-toastify";
 
 
 const fireStoreDb = getFirestore(app);
@@ -39,14 +40,15 @@ const Dashboard = () => {
 
   return (
     <div className="grid min-h-[110vh] w-full pb-10 px-8  lg:bg-white ">
+    <ToastContainer />
       <div className="grid grid-cols-12 gap-6">
         <div className="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
           <div className="col-span-12 mt-8">
-            <div className="container px-5 py-2 mx-auto">
-              <div className="flex flex-col text-center w-full mb-20">
+            <div className="container px-5 py-1 mx-auto">
+              <div className="flex flex-col text-center w-full lg:mb-20 lg:bg-blue-900 py-1 lg:rounded-md">
 
-                <h1 className="sm:text-4xl text-2xl font-medium title-font text-gray-900">
-                  <b className=" text-green-500">Project Vely</b> DASHBOARD
+                <h1 className="sm:text-4xl text-4xl font-medium title-font font-sans text-neutral-800 lg:text-white">
+                  <b className=" text-[35px] font-sans font-normal hidden sm:block">Educate</b> DASHBOARD
                 </h1>
               </div>
             </div>

@@ -28,7 +28,7 @@ const Questionlist = () => {
 
     <div className='flex flex-col'>
       <section className='min-h-[8vh] bg-[#F8F9F9] flex justify-center items-center shadow-md shadow-black/20 dark:shadow-white/20 '>
-        <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl'>Questions</h1>
+        <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl'>Questions</h1>
       </section>
       <section className="relative  lg:px-10  lg:pt-10 bg-blueGray-50 w-[100%] min-h-[95vh] ShowcarsBack">
         <div className="w-full mb-12 lg:px-0">

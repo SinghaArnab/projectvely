@@ -4,7 +4,6 @@ import { app } from '../../Firebase/FirebaseAuth';
 import Addadmin from '../components/Addadmin';
 
 
-
 const fireStore = getFirestore(app)
 
 const Powerbranch = () => {
@@ -41,7 +40,7 @@ const Powerbranch = () => {
     return (
         <div className='flex flex-col w-[100%]'>
             <section className='min-h-[8vh] bg-[#F8F9F9] flex justify-center items-center shadow-md shadow-black/20 dark:shadow-white/20 '>
-                <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl'>Power Branch</h1>
+                <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl'>Power Branch</h1>
             </section>
             {
                 isAddAdmin ?

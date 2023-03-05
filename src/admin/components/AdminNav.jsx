@@ -43,8 +43,8 @@ const AdminNav = () => {
     }
 
     return (
-        <div className="lg:flex lg:max-h-[100vh]">
-            <section className='w-[20%] max-h-[110vh] hidden md:hidden lg:block  bg-neutral-700' >
+        <div className="lg:flex lg:max-h-[100vh] ">
+            <section className='w-[20%] max-h-[110vh] hidden md:hidden lg:block  bg-white border-r-[1px] border-cyan-400' >
                 <div className='flex pt-2 px-2 border-b-[1px] mb-10 bg-white'>
                     <div className="flex flex-no-shrink items-center mr-6  text-grey-darkest">
                         <img src="./Logo2.png" className='h-[50px] mix-blend-darken' alt="Educate" />
@@ -53,34 +53,34 @@ const AdminNav = () => {
 
                 <div className='sidenav'>
 
-                    <li className="border-t md:border-none pr-7 box arrow-left" type="checkbox" >
-                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker font-bold  w-full ${pathname === "/Dashboard" ? 'active' : "bg-white"}`}>Dashboard</Link>
+                    <li className="border-t md:border-none pr-7 hover:bg-white  hover:text-red-400 box arrow-left" type="checkbox" >
+                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold font-bold w-full ${pathname === "/Dashboard" ? 'active' : "bg-white"}`}><i className="fa-solid fa-house-chimney "></i> <span class="ml-2">Dashboard</span> </Link>
                     </li>
 
 
-                    <li className="border-t md:border-none pr-7  box arrow-left">
-                        <NavLink to="/Dashboard/AddQuestion" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Add Question</NavLink>
+                    <li className="border-t md:border-none pr-7 hover:bg-white hover:text-red-400  box arrow-left">
+                        <NavLink to="/Dashboard/AddQuestion" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:font-semibold  w-full"><i class="fa-solid fa-square-plus"></i> <span class="ml-2">Add Question</span></NavLink>
                     </li>
 
-                    <li className="border-t md:border-none pr-7" >
-                        <NavLink to="/Dashboard/AddProjects" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Add Projects</NavLink>
+                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400 " >
+                        <NavLink to="/Dashboard/AddProjects" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-square-plus"></i> <span class="ml-2">Add Projects</span></NavLink>
                     </li>
 
-                    <li className="border-t md:border-none pr-7" >
-                        <NavLink to="/Dashboard/allquestion" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Question List</NavLink>
+                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                        <NavLink to="/Dashboard/allquestion" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-list-check"></i> <span class="ml-2"> Question List</span></NavLink>
                     </li>
-                    <li className="border-t md:border-none pr-7" >
-                        <NavLink to="/Dashboard/showprojects" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Project List</NavLink>
+                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                        <NavLink to="/Dashboard/showprojects" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-bars-progress"></i> <span class="ml-2"> Project List</span></NavLink>
                     </li>
 
-                    <li className="border-t md:border-none pr-7" >
-                        <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Category</NavLink>
+                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                        <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-clipboard"></i> <span class="ml-2"> Category</span></NavLink>
                     </li>
-                    <li className="border-t md:border-none pr-7" >
-                        <NavLink to="/Dashboard/profile" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Profile</NavLink>
+                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                        <NavLink to="/Dashboard/profile" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-address-card"></i> <span class="ml-2">Profile</span></NavLink>
                     </li>
-                    <li className="border-t md:border-none pr-7" >
-                        <NavLink to="/Dashboard/powerbranch" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Manage Accounts</NavLink>
+                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                        <NavLink to="/Dashboard/powerbranch" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-people-group"></i> <span class="ml-2">Manage Accounts</span></NavLink>
                     </li>
 
                 </div>

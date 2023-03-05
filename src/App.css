@@ -306,6 +306,7 @@ tr th:nth-child(1) {
   background-color: #fd5f8c;
   color: white;
   position: relative;
+  margin-right: 1.75rem;
   
   
 }
@@ -329,7 +330,7 @@ tr th:nth-child(1) {
   object-fit:cover;
   background-color: #403e3e;
   color: white;
-  box-shadow: 0px 10px 20px rgb(251, 145, 145);
+  box-shadow: 0px 10px 20px white;
 }
 
 

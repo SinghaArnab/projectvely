@@ -8,7 +8,7 @@ const Profile = () => {
     return (
         <div className='flex flex-col min-h-auto lg:min-h-[90vh]'>
             <section className='min-h-[8vh] bg-[#F8F9F9] flex justify-center items-center shadow-md shadow-black/20 dark:shadow-white/20 lg:mb-4'>
-                <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl'>Your Profile</h1>
+                <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl'>Your Profile</h1>
             </section>
             <div className=' relative flex justify-center items-start h-[80vh] lg:h-full'>
 
