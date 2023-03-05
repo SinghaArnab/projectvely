@@ -6,59 +6,45 @@ import { useDispatch } from 'react-redux';
 import { singInUser } from '../../Redux/Slice/AuthSlice';
 
 
-const auth=getAuth(app)
+const auth = getAuth(app)
 
 const AdminLogin = () => {
 
-
-    const [input,setInput] =useState({
+    const [input, setInput] = useState({
         email: "",
         password: ""
     })
-    
+
     const Navigate = useNavigate()
-    const Dispatch=useDispatch()
+    const Dispatch = useDispatch()
 
     const handelChange = (e) => {
-        const {name, value} = e.target
-
-        setInput(() => {
-            return {
-                ...input, [name]:value
-            }
-        })
-
+        setInput({ ...input, [e.target.name]: e.target.value })
     }
 
     const handelSubmit = (e) => {
         e.preventDefault()
         console.log(input)
         signInWithEmailAndPassword(auth, input.email, input.password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user.email)
-            Navigate("/Dashboard")
-            Dispatch(singInUser(user.email))
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, + " " + errorMessage)
-        });
-
-
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user.email)
+                Navigate("/Dashboard")
+                Dispatch(singInUser(user.email))
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, + " " + errorMessage)
+            });
     }
-
-
-
-
 
     return (
         <div className="h-screen font-sans login bg-cover">
             <div className="container mx-auto h-full flex flex-1 justify-center items-center">
                 <div className="w-full max-w-lg">
                     <div className="leading-loose">
-                        <form className="max-w-sm mt-4 p-10 bg-black bg-opacity-60  rounded-t-md shadow-xl" onSubmit={handelSubmit}>
+                        <form className="max-w-md mt-4 p-10 bg-black bg-opacity-60  rounded-t-md shadow-xl" onSubmit={handelSubmit}>
                             <p className="text-white text-center text-lg font-bold mb-2">ADMIN LOGIN</p>
                             <div className="">
                                 <label className="block text-lg text-white" htmlFor="email">E-mail</label>
@@ -78,7 +64,7 @@ const AdminLogin = () => {
                             </div>
 
                         </form>
-                        <div className="max-w-sm pb-5 px-10 bg-opacity-60 rounded-b-sm shadow-xl bg-black ">
+                        <div className="max-w-md pb-5 px-10 bg-opacity-60 rounded-b-sm shadow-xl bg-black ">
                             <button
                                 className="w-full  px-4 py-1 tracking-wide text-white transition-colors duration-200 transform bg-green-400 rounded-md hover:bg-green-500 focus:outline-none focus:bg-green-600 focus:ring focus:ring-green-500 focus:ring-opacity-50 hover:scale-95">
                                 <i className="fab fa-google mr-5"></i> SignIn with Google

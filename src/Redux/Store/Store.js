@@ -6,6 +6,6 @@ import DataSlice from "../Slice/DataSlice";
 export const Store=configureStore({
     reducer :{
         AuthSlice:AuthSlice,
-        DataSlice:DataSlice
+        QuestionData:DataSlice,
     }
 })

@@ -1,7 +1,7 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
-import React, { useEffect } from 'react'
+import { Link, NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getAuth, onAuthStateChanged ,signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { app } from '../../Firebase/FirebaseAuth';
 import { singInUser } from '../../Redux/Slice/AuthSlice';
 
@@ -9,67 +9,90 @@ import { singInUser } from '../../Redux/Slice/AuthSlice';
 const auth = getAuth(app);
 
 const AdminNav = () => {
-
-
+    const { pathname } = useLocation()
     const { userEmail } = useSelector((state) => state.AuthSlice)
     const Navigate = useNavigate()
     const Dispatch = useDispatch()
+    const [logToggle, setToggle] = useState(false)
 
 
     useEffect(() => {
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
-
                 Dispatch(singInUser(user.email))
             } else {
-                Navigate('/')
+                Navigate('/adminlogin')
             }
         });
-
         console.log("Admin Nav")
-
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const logout = () => {
-        Navigate('/')
-        signOut(auth).then(() => {
-            Dispatch(singInUser(""))
-          }).catch((error) => {
-            console.log(error)
-          });
+        signOut(auth)
+            .then(() => Navigate('/'))
+            .then(() => { Dispatch(singInUser("")) })
+            .catch((error) => {
+                console.log(error)
+            });
     }
+
+    const logtoggle = () => {
+        setToggle(!logToggle)
+    }
+
     return (
-        <div className="flex flex-wrap place-items-center  ">
-            <section className="relative w-[100%]">
+        <div className="lg:flex lg:max-h-[100vh]">
+            <section className='w-[20%] max-h-[110vh] hidden md:hidden lg:block  bg-neutral-700' >
+                <div className='flex pt-2 px-2 border-b-[1px] mb-10 bg-white'>
+                    <div className="flex flex-no-shrink items-center mr-6  text-grey-darkest">
+                        <img src="./Logo2.png" className='h-[50px] mix-blend-darken' alt="Educate" />
+                    </div>
+                </div>
+
+                <div className='sidenav'>
+
+                    <li className="border-t md:border-none pr-7 box arrow-left" type="checkbox" >
+                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker font-bold  w-full ${pathname === "/Dashboard" ? 'active' : "bg-white"}`}>Dashboard</Link>
+                    </li>
+
+
+                    <li className="border-t md:border-none pr-7  box arrow-left">
+                        <NavLink to="/Dashboard/AddQuestion" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Add Question</NavLink>
+                    </li>
+
+                    <li className="border-t md:border-none pr-7" >
+                        <NavLink to="/Dashboard/AddProjects" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Add Projects</NavLink>
+                    </li>
+
+                    <li className="border-t md:border-none pr-7" >
+                        <NavLink to="/Dashboard/allquestion" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Question List</NavLink>
+                    </li>
+                    <li className="border-t md:border-none pr-7" >
+                        <NavLink to="/Dashboard/showprojects" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Project List</NavLink>
+                    </li>
+
+                    <li className="border-t md:border-none pr-7" >
+                        <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Category</NavLink>
+                    </li>
+                    <li className="border-t md:border-none pr-7" >
+                        <NavLink to="/Dashboard/profile" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Profile</NavLink>
+                    </li>
+                    <li className="border-t md:border-none pr-7" >
+                        <NavLink to="/Dashboard/powerbranch" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker bg-white w-full">Manage Accounts</NavLink>
+                    </li>
+
+                </div>
+            </section>
+            <section className="relative w-[100%] flex  md:block lg:hidden">
 
                 <nav className="nav flex flex-wrap items-center justify-between w-[100%] p-2 bg-white shadow-2xl">
-                    <div className="flex flex-no-shrink items-center mr-6 py-3 text-grey-darkest">
-                        <svg className="fill-current h-8 mr-2 w-8" xmlns="http://www.w3.org/2000/svg" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="1.5" clipRule="evenodd" viewBox="0 0 716 895">
-                            <path d="M357.776 0l357.77 178.885v536.657l-357.77 178.89L0 715.542V178.885"></path>
-                            <path className="text-white fill-current" d="M357.776 804.982l268.32-134.16v-178.89l-89.44-44.72 89.44-44.72V223.606L357.776 89.442v626.1l-178.89-89.44V178.885l-89.443 44.721v447.216l268.333 134.16z"></path>
-                            <path d="M447.216 670.822l89.44-44.72v-89.45l-89.44-44.72v178.89zM447.216 402.492l89.44-44.721v-89.443l-89.44-44.722"></path>
-                        </svg>
-                        <span className="font-semibold text-xl tracking-tight">
-                            <div className="waviy">
-                                <span style={{ "--i": 1 }}>P</span>
-                                <span style={{ "--i": 2 }}>R</span>
-                                <span style={{ "--i": 3 }}>O</span>
-                                <span style={{ "--i": 4 }}>J</span>
-                                <span style={{ "--i": 5 }}>E</span>
-                                <span style={{ "--i": 6 }}>C</span>
-                                <span style={{ "--i": 7 }}>T</span>
-                                <span style={{ "--i": 3 }}>&nbsp;&nbsp;</span>
-                                <span style={{ "--i": 7 }}>V</span>
-                                <span style={{ "--i": 8 }}>E</span>
-                                <span style={{ "--i": 9 }}>L</span>
-                                <span style={{ "--i": 10 }}>L</span>
-                                <span style={{ "--i": 11 }}>Y</span>
-
-                            </div>
-                        </span>
+                    <div className='flex pt-2 px-1 bg-white'>
+                    <div className="flex flex-no-shrink items-center mr-6  text-grey-darkest">
+                        <img src="./Logo2.png" className='h-[50px] mix-blend-darken' alt="Educate" />
                     </div>
+                </div>
 
                     <input className="menu-btn hidden" type="checkbox" id="menu-btn" />
                     <label className="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none" htmlFor="menu-btn">
@@ -97,6 +120,14 @@ const AdminNav = () => {
                             <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">Category</NavLink>
                         </li>
 
+                        <li className="border-t md:border-none ml-0 lg:ml-4" >
+                            <NavLink to="/Dashboard/profile" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">Profile</NavLink>
+                        </li>
+                        <li className="border-t md:border-none ml-0 lg:ml-4" >
+                            <NavLink to="/Dashboard/powerbranch" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">Manage Account</NavLink>
+                        </li>
+
+
                         <div className='relative flex justify-end lg:justify-center items-center flex-col lg:flex-row ml-0 lg:ml-4'>
                             <button className='bg-yellow-300 text-black p-2  font-semibold w-[100%] lg:w-auto lg:ml-0'>{userEmail && userEmail}
                             </button>
@@ -113,7 +144,30 @@ const AdminNav = () => {
 
             </section>
 
-            <Outlet />
+            <div className='flex flex-col lg:w-[80%] min-h-[100vh] overflow-y-scroll'>
+
+                <div className='flex flex-col'>
+                    <section className='hidden  lg:block min-h-[8.3vh] bg-[#F1F5FB] border-b-[1px]  shadow-md shadow-black/20 dark:shadow-white/20 '>
+
+                        <div className='flex  justify-end items-center h-[100%]'>
+
+                            <a href="#none" className="relative inline-flex items-center justify-center w-10 h-10 text-white rounded-full">
+                                <img src="https://i.pravatar.cc/40?img=3" alt="user name" title="user name" width="40" height="40" className="max-w-full border-2 border-white rounded-full" />
+                            </a>
+
+                            <button onClick={logtoggle} className=' text-black p-2  font-semibold w-[100%] lg:w-auto lg:ml-0'>{userEmail && userEmail} <i className="fa-solid fa-angle-down"></i>
+                            </button>
+
+                            {logToggle &&
+                                <button className={' absolute top-10 z-40 h-[40px] w-[100%] lg:w-[100px] bg-red-400 lg:ml-0 mt-2 lg:mt-0'} onClick={logout}>
+                                    logout
+                                </button>}
+                        </div>
+                    </section>
+                </div>
+                <Outlet />
+            </div>
+
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { v4 } from 'uuid'
-import { getFirestore, collection, addDoc, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDoc, doc, getDocs, updateDoc } from "firebase/firestore";
 import { app } from '../../Firebase/FirebaseAuth';
 import { useSelector } from 'react-redux';
 import { getStorage, uploadBytes, ref } from "firebase/storage";
@@ -15,38 +15,29 @@ const Category = () => {
     const { userEmail } = useSelector((state) => state.AuthSlice)
 
     const [isModel, setModel] = useState(false)
+    const [isUpdate, setUpdate] = useState(false)
+    const [UpdateData, setUpdateData] = useState("")
+    const [UpdateId, setUpdateId] = useState(false)
     const [categoryData, setCategory] = useState("")
-    const [refresh, setRefresh] = useState(false)
     const [projectImg, setImage] = useState("")
+    
     const [input, setInput] = useState({
         id: v4(),
         CategoryName: ""
     })
 
     const handelChange = (e) => {
-        const { name, value } = e.target
-        setInput(() => {
-            return {
-                ...input, [name]: value
-            }
-        })
+        setInput({...input, [e.target.name]: e.target.value})
     }
 
     const handelSubmit = () => {
         setInput({ id: v4(), CategoryName: "" })
-        console.log(input);
-        addCategory()
-        setModel(false)
-        setRefresh(!refresh)
+        addCategory().then(() => setModel(false))
     }
 
-    const handelCancel = () => {
-        setInput({ id: v4(), categoryName: "" })
-        setModel(false)
-    }
-
-    const handelOpen = () => {
+    const addCategoryOpen = () => {
         setModel(!isModel)
+        setUpdate(false)
     }
 
     const addCategory = async () => {
@@ -68,73 +59,191 @@ const Category = () => {
 
     useEffect(() => {
         GetCategory().then((category) => setCategory(category.docs));
-
         console.log("I am Category")
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [refresh])
+    }, [isModel, isUpdate])
 
 
+    const editCategory = (categoryId) => {
+        getDOc(categoryId)
+        setUpdateId(categoryId)
+        setModel(false)
+    }
 
-    const categoryDelete = async (categoryId) => {
-        await deleteDoc(doc(fireStore, "SubjectCategory", categoryId));
-        setRefresh(!refresh)
+    const getDOc = async (id) => {
+        const ref = doc(fireStore, 'SubjectCategory', id);
+        const snap = await getDoc(ref);
+        setUpdateData(snap.data())
+        setUpdate(true)
+    }
+
+    const updateDocument = async (UpdateId) => {
+        const docRef = doc(fireStore, 'SubjectCategory', UpdateId)
+        await updateDoc(docRef, {
+            categoryName: UpdateData.CategoryName,
+            adminEmail: userEmail
+        })
+    }
+
+    const handelEditSubmit = () => {
+        setInput({ id: v4(), CategoryName: "" })
+        console.log(input);
+        updateDocument(UpdateId)
+        setUpdate(false)
+    }
+
+    const handelUpdateChange = (e) => {
+        setUpdateData({...input, [e.target.name]: e.target.value})
+    }
+
+    const UpdateCancel = () => {
+        setUpdate(false)
     }
 
     return (
-        <div className="w-[100%] min-h-[90.8vh] flex justify-center items-center flex-col bg-gray-900 pb-10 ">
 
-            <div className='w-[90%] lg:w-[70%] mt-10 lg:mt-10 bg-green-300 rounded-t-md text-center flex justify-center items-center p-8 '>
-                <h1 className=' font-semibold text-xl lg:text-5xl'>Add Category <span onClick={handelOpen} className='text-white cursor-pointer '><i className="fa-solid fa-plus text-white hover:scale-110 hover:text-red-400"></i></span> </h1>
-            </div>
-
-            {isModel &&
-                <div className='w-[90%] lg:w-[70%] mt-2 lg:mt-0 bg-red-300 rounded-b-md text-center flex justify-center items-center p-2  flex-col lg:flex-row'>
-                    <span className="whitespace-nowrap px-3 py-3  font-medium float-right text-2xl mr-10 hidden lg:block">Category Name </span>
-                    <input type='text' name='CategoryName' value={input.CategoryName} onChange={handelChange} className=' font-semibold lg:text-xl outline-none p-1.5 w-[95%] lg:w-[30%] lg:mr-4' placeholder='Enter New Category Name...' />
-
-                    <div className="lg:mb-8 mr-4">
-                        <label className="block mb-2 font-semibold text-gray-900 dark:text-white text-xl" htmlFor="user_avatar">Upload Category Image</label>
-                        <input name='projectImg' onChange={(e) => { setImage(e.target.files[0]) }} className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-grey-70 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2" aria-describedby="user_avatar_help" id="user_avatar" type="file" />
-                    </div>
-
-                    <div className='flex justify-center items-center flex-row mt-2 lg:mt-0'>
-                        <span onClick={handelSubmit} className="whitespace-nowrap bg-yellow-400 px-10 lg:px-3 py-2 text-md font-medium float-right mr-2 cursor-pointer" > Add Category </span>
-                        <span onClick={handelCancel} className="whitespace-nowrap bg-red-400 px-10 lg:px-3 py-2 text-md font-medium float-right mr-2 cursor-pointer"> Cancel </span>
-                    </div>
-                </div>
-            }
-
-
-            <div className="overflow-auto lg:overflow-visible min-w-[95%] lg:min-w-[70%]  flex justify-evenly items-center flex-col rounded-lg gap-2 mt-10">
-                <div className='flex justify-between lg:justify-around  items-center w-[100%] p-4 rounded-lg  bg-[#EF9A53] mb-4'>
-                    <div>
-                        <h1 className='text-xl font-bold text-gray-900 sm:text-3xl'>Category</h1>
-                    </div>
-                    <div className='flex justify-center items-center flex-row mr-[4%]'>
-                        <h1 className='text-xl font-bold text-gray-900 sm:text-3xl'>Actions</h1>
-                    </div>
+        <div className='flex flex-col'>
+            <section className='min-h-[8vh] bg-[#F8F9F9] flex justify-center items-center shadow-md shadow-black/20 dark:shadow-white/20 '>
+                <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl'>Category</h1>
+            </section>
+            <div className="w-[100%]  min-h-[80vh] flex justify-center items-center flex-col mb-5">
+                <div className=" mt-5 sm:w-[100%] w-[100%] flex justify-center items-center ">
+                    <button
+                        className="sm:w-[70%] w-[95%] bg-green-400 hover:text-yellow-300 hover:text-2xl shadow-lg text-xl shadow- shadow-green-500 text-white cursor-pointer px-5 py-2 text-center"
+                        onClick={addCategoryOpen}
+                    >
+                        Add Category +
+                    </button>
                 </div>
 
-                {categoryData && categoryData.map((x, index) => {
-                    return (
+                <div className="flex flex-col sm:w-[70%] w-[95%]">
+                    <div className="overflow-x-auto shadow-md ">
+                        <div className="inline-block min-w-full align-middle">
+                            <div className="overflow-hidden ">
+                                <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                                    <thead className="bg-gray-100 dark:bg-gray-700">
+                                        {isModel && (
+                                            <tr className="hover:bg-gray-100 dark:hover:bg-gray-700 overflow-x-scroll">
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <input
+                                                        type="text"
+                                                        name="CategoryName"
+                                                        value={input.CategoryName}
+                                                        onChange={handelChange}
+                                                        className=" h-10 text-black text-center  lg:w-full text-lg outline-none"
+                                                        placeholder="New Category Name"
+                                                    />
+                                                </td>
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <input
+                                                        type="file"
+                                                        className="w-[200px] lg:w-full"
+                                                        name="projectImg"
+                                                        onChange={(e) => {
+                                                            setImage(e.target.files[0]);
+                                                        }}
+                                                    />
+                                                </td>
 
-                        <div className='flex justify-between lg:justify-around items-center w-[100%] p-3 rounded-lg  bg-[#F5D5AE]' key={x.id}>
-                            <div>
-                                <h1 className='text-xl font-bold text-gray-900 sm:text-2xl'>{index + 1}. {x.data().categoryName}</h1>
-                            </div>
-                            <div className='flex justify-center items-center flex-row gap-2 lg:gap-10'>
-                                <button className='whitespace-nowrap bg-yellow-400 px-5 py-3 text-xs font-medium float-right mr-2 rounded-md transition hover:scale-105 cursor-pointer'>Edit</button>
-                                <button onClick={categoryDelete()} className='whitespace-nowrap bg-red-500 px-5 py-3 text-xs font-medium float-right mr-2 rounded-md transition hover:scale-105 cursor-pointer'>Delete</button>
+                                                <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                                    <button
+                                                        className="bg-green-500 text-white cursor-pointer mr-4 px-4 py-2 text-center justify-center items-center rounded-md"
+                                                        onClick={handelSubmit}
+                                                    >
+                                                        Add Category
+                                                    </button>
+                                                    <button
+                                                        className="bg-red-500 text-white cursor-pointer px-3 py-2 text-center justify-center items-center rounded-md"
+                                                        onClick={() => setModel(false)}
+                                                    >
+                                                        Cancel
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        )}
+                                        {isUpdate && UpdateData && (
+                                            <tr className="hover:bg-violet-500 bg-violet-400">
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <input
+                                                        type="text"
+                                                        name="CategoryName"
+                                                        value={UpdateData.categoryName}
+                                                        onChange={handelUpdateChange}
+                                                        className=" h-10 text-black text-center lg:w-full text-lg outline-none"
+                                                        placeholder="Category Name"
+                                                    />
+                                                </td>
+                                                <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <input
+                                                        type="file"
+                                                        className="w-[200px] lg:w-full"
+                                                        name="projectImg"
+                                                        onChange={(e) => {
+                                                            setImage(e.target.files[0]);
+                                                        }}
+                                                    />
+                                                </td>
+                                                <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                                                    <button
+                                                        className="bg-yellow-400  mx-2  text-white cursor-pointer px-4 py-2 text-center justify-center items-center rounded-md"
+                                                        onClick={handelEditSubmit}
+                                                    >
+                                                        Update Category
+                                                    </button>
+                                                    <button
+                                                        className="bg-red-500 text-white cursor-pointer px-3 py-2 text-center justify-center items-center rounded-md"
+                                                        onClick={UpdateCancel}
+                                                    >
+                                                        Cancel
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        )}
+                                        <tr>
+                                            <th
+                                                scope="col"
+                                                className=" py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400"
+                                            >
+                                                No
+                                            </th>
+
+                                            <th
+                                                scope="col"
+                                                className="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400"
+                                            >
+                                                Product Name
+                                            </th>
+
+                                            <th
+                                                scope="col"
+                                                className="py-3 px-6 text-xs font-medium tracking-wider text-center text-gray-700 uppercase dark:text-gray-400"
+                                            >
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                                        {categoryData &&
+                                            categoryData.map((x,index) => {
+                                                return (
+                                                    <tr className="hover:bg-gray-100 dark:hover:bg-gray-700" key={index}>
+                                                        <td className="py-4 px-6 text-lg text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">{index+1}</td>
+                                                        <td className="py-4 px-6 text-lg text-center font-medium text-gray-900 whitespace-nowrap dark:text-white">{x.data().categoryName}</td>
+                                                        <td className="py-4 px-6 text-sm text-center font-medium  whitespace-nowrap">
+                                                            <button onClick={() =>editCategory(x.id)} className="bg-red-500  text-white cursor-pointer px-5 py-2 text-md text-center justify-center items-center rounded-md">
+                                                                Edit
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
-                    )
-                })
-
-                }
-
+                    </div>
+                </div>
             </div>
-
         </div>
     )
 }
