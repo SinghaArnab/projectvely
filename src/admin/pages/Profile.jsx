@@ -16,9 +16,9 @@ const Profile = () => {
 
 
                     <div className="relative flex justify-center items-end lg:w-[80%] h-[300px] lg:h-[400px] rounded-[50%] ">
-                        <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYH_VDaGfxQ_cPhkgDPyoxXJgnnKHzEw7kdg&usqp=CAU' className="rounded-[50%] border-8 border-grey-500 h-[220px] w-[220px] object-cover" width='300' alt="" />
+                        <img src='https://marketplace.canva.com/EAFEits4-uw/1/0/800w/canva-boy-cartoon-gamer-animated-twitch-profile-photo-r0bPCSjUqg0.jpg' className="rounded-[50%] border-8 border-green-400 h-[220px] w-[220px] object-cover" width='300' alt="" />
                     </div>
-                    <div className="flex justify-center items-center w-[100%] lg:h-full bg-neutral-700 flex-col">
+                    <div className="flex justify-center items-center w-[100%] lg:h-full bg-neutral-900 flex-col">
 
                         <div className="flex justify-center items-center flex-col mt-5 " id='one'>
                             <h1 className="text-[20px]" >Hi,Your Profile Name is</h1>
@@ -39,7 +39,7 @@ const Profile = () => {
 
                             {isUpdate &&
 
-                                <div className=' absolute flex w-[100%] lg:w-[96%] h-[50%]  bg-neutral-700  bottom-0'>
+                                <div className=' absolute flex w-[100%] lg:w-[96%] h-[50%]  bg-neutral-900  bottom-0'>
                                     <form action="" className="w-full px-4 lg:px-0 mx-auto flex flex-col justify-center items-center">
                                         <div className="pb-2 pt-4 w-[80%] lg:w-[60%]">
                                             <input type="email" name="email" id="email" placeholder="Email" className="block w-[100%] p-4 text-lg rounded-sm bg-black" />

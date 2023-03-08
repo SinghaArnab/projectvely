@@ -54,33 +54,33 @@ const AdminNav = () => {
                 <div className='sidenav'>
 
                     <li className="border-t md:border-none pr-7 hover:bg-white  hover:text-red-400 box arrow-left" type="checkbox" >
-                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold font-bold w-full ${pathname === "/Dashboard" ? 'active' : "bg-white"}`}><i className="fa-solid fa-house-chimney "></i> <span class="ml-2">Dashboard</span> </Link>
+                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold font-bold w-full ${pathname === "/Dashboard" ? 'active' : "bg-white"}`}><i className="fa-solid fa-house-chimney "></i> <span className="ml-2">Dashboard</span> </Link>
                     </li>
 
 
                     <li className="border-t md:border-none pr-7 hover:bg-white hover:text-red-400  box arrow-left">
-                        <NavLink to="/Dashboard/AddQuestion" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:font-semibold  w-full"><i class="fa-solid fa-square-plus"></i> <span class="ml-2">Add Question</span></NavLink>
+                        <NavLink to="/Dashboard/AddQuestion" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:font-semibold  w-full"><i className="fa-solid fa-square-plus"></i> <span className="ml-2">Add Question</span></NavLink>
                     </li>
 
                     <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400 " >
-                        <NavLink to="/Dashboard/AddProjects" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-square-plus"></i> <span class="ml-2">Add Projects</span></NavLink>
+                        <NavLink to="/Dashboard/AddProjects" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-square-plus"></i> <span className="ml-2">Add Projects</span></NavLink>
                     </li>
 
                     <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
-                        <NavLink to="/Dashboard/allquestion" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-list-check"></i> <span class="ml-2"> Question List</span></NavLink>
+                        <NavLink to="/Dashboard/allquestion" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-list-check"></i> <span className="ml-2"> Question List</span></NavLink>
                     </li>
                     <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
-                        <NavLink to="/Dashboard/showprojects" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-bars-progress"></i> <span class="ml-2"> Project List</span></NavLink>
+                        <NavLink to="/Dashboard/showprojects" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-bars-progress"></i> <span className="ml-2"> Project List</span></NavLink>
                     </li>
 
                     <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
-                        <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-clipboard"></i> <span class="ml-2"> Category</span></NavLink>
+                        <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-clipboard"></i> <span className="ml-2"> Category</span></NavLink>
                     </li>
                     <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
-                        <NavLink to="/Dashboard/profile" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-address-card"></i> <span class="ml-2">Profile</span></NavLink>
+                        <NavLink to="/Dashboard/profile" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-address-card"></i> <span className="ml-2">Profile</span></NavLink>
                     </li>
                     <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
-                        <NavLink to="/Dashboard/powerbranch" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i class="fa-solid fa-people-group"></i> <span class="ml-2">Manage Accounts</span></NavLink>
+                        <NavLink to="/Dashboard/powerbranch" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-people-group"></i> <span className="ml-2">Manage Accounts</span></NavLink>
                     </li>
 
                 </div>
@@ -159,9 +159,15 @@ const AdminNav = () => {
                             </button>
 
                             {logToggle &&
-                                <button className={' absolute top-10 z-40 h-[40px] w-[100%] lg:w-[100px] bg-red-400 lg:ml-0 mt-2 lg:mt-0'} onClick={logout}>
-                                    logout
-                                </button>}
+                            <ul className='text-gray-700 bg-gray-200 top-12 mr-5 px-2 py-2  absolute flex flex-col gap-2' onMouseLeave={logtoggle}>
+                                <li className={' h-[40px] w-[100%] lg:w-[100%] flex justify-center items-center border-b-[1px] border-black bg-gray-200 hover:bg-gray-400 cursor-pointer lg:ml-0 lg:mt-0'} onClick={()=>Navigate('/Dashboard/profile')}>
+                                <i class="fa-solid fa-user"></i><span className="ml-2">Profile</span>
+                                </li>
+                                <li className={' relative z-40 h-[40px] w-[100%]  flex justify-center items-center text-center lg:w-[100px] bg-gray-200 hover:bg-gray-400 cursor-pointer lg:ml-0 mt-2 lg:mt-0'} onClick={logout}>
+                                <i class="fa-solid fa-right-from-bracket"></i><span className="ml-2">logout</span>
+                                </li>
+                            </ul>
+                               }
                         </div>
                     </section>
                 </div>

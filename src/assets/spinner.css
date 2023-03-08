@@ -1,0 +1,38 @@
+.clock{
+  position: relative;
+  border: 10px solid #ff0266;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.clock .hand{
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%);    
+  transform-origin: bottom;
+  border: 3px solid transparent;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.clock .hand.hour {
+  width: 8px;
+  height: 35%;
+  animation: rotate 5s linear infinite;
+  background-color: #ffde03;
+}
+
+.clock .hand.minute {
+  width: 6px;
+  height: 40%;
+  z-index: 10;
+  animation: rotate 2s linear infinite;
+  background-color: white;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}

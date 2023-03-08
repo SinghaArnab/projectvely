@@ -32,7 +32,7 @@ const Navbar = () => {
         <section className="relative w-[100%]">
           <nav className="nav flex flex-wrap items-center justify-between w-[100%] p-2 bg-white shadow-sm">
             <div className="flex flex-no-shrink items-center mr-6  text-grey-darkest">
-             <img src="./Logo2.png" className='h-[50px] mix-blend-darken' alt="Educate" />
+              <img src="./Logo2.png" className='h-[50px] mix-blend-darken' alt="Educate" />
             </div>
 
             <input className={"menu-btn hidden" + (navbarOpen ? " flex" : " hidden")} type="checkbox" id="menu-btn" />
@@ -48,6 +48,18 @@ const Navbar = () => {
 
               <li className="border-t md:border-none ml-0 lg:ml-4"  >
                 <NavLink to="/InterviewPrep" className="block md:inline-block px-4 py-3 no-underline  hover:text-grey-darker">Interview Prep</NavLink>
+              </li>
+              <li className="border-t md:border-none ml-0 lg:ml-4"  >
+                <NavLink to="/allprojects" className="block md:inline-block px-4 py-3 no-underline  hover:text-grey-darker">All Projects</NavLink>
+              </li>
+              <li className="border-t md:border-none ml-0 lg:ml-4"  >
+                <NavLink to="/courses" className="block md:inline-block px-4 py-3 no-underline  hover:text-grey-darker">All Courses</NavLink>
+              </li>
+              <li className="border-t md:border-none ml-0 lg:ml-4"  >
+                <NavLink to="/login" className="block md:inline-block px-4 py-3 no-underline  hover:text-grey-darker">Login</NavLink>
+              </li>
+              <li className="border-t md:border-none ml-0 lg:ml-4"  >
+                <NavLink to="/coursedetails" className="block md:inline-block px-4 py-3 no-underline  hover:text-grey-darker">coursedetails</NavLink>
               </li>
 
             </ul>

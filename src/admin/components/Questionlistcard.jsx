@@ -5,7 +5,7 @@ import UpdateQuestion from './UpdateQuestion';
 
 const fireStore = getFirestore(app);
 
-const Questionlistcard = ({ x, queId, index }) => {
+const Questionlistcard = ({ x, queId, index}) => {
 
   const [updateModal, setupdateModal] = useState(false);
 
@@ -32,7 +32,7 @@ const Questionlistcard = ({ x, queId, index }) => {
           <h1>Q.{x.question}</h1>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-md font-sans whitespace-nowrap p-4">
-          <h1>Ans. {x.answer.slice(0, 40)}...</h1>
+          <h1>Ans. {x.answer.slice(0, 35)}...</h1>
         </td>
         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right ">
           <li className=" h-[102px] md:h-[50px] w-[33%] md:w-[100%] flex justify-center items-center flex-col md:flex-row">

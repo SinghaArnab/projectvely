@@ -1,8 +1,8 @@
 import React,{useEffect,useState} from "react";
 
 import {getStorage,getDownloadURL,ref} from "firebase/storage"
-import { app } from "../../Firebase/FirebaseAuth";
-
+import {app} from '../../Firebase/FirebaseAuth'
+import { Link } from "react-router-dom";
 
 const firestorage=getStorage(app)
 const ProjectCard = ({x}) => {
@@ -15,18 +15,21 @@ const getCategoryImge=(path)=>{
   }
     useEffect(() => {
       getCategoryImge(x.projectImage).then((url)=>setimageURL(url))
+      console.log("I am project card")
   
-    }, [])
+    }, [x.projectImage])
 
   return (
-    <div className="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
+    <div className="">
+    <Link to={`/Projects/${x.id}`}>
+    <div className="max-w-lg bg-white px-6 pt-6 pb-2 sm:m-0 m-3 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
         <h3 className="mb-3 text-xl font-bold text-indigo-600">{x.projectName}</h3>
         <div className="relative">
           <img className="w-full rounded-xl" src={imageURL} alt="Colors" />
           <p className="absolute top-0 bg-yellow-300 text-gray-800 font-semibold py-1 px-3 rounded-br-lg rounded-tl-lg">FREE</p>
         </div>
         {/* <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">React js Projects  for {x.Level}</h1> */}
-        <h1 className="mt-4 text-gray-800  font-bold cursor-pointer"> {x.ProjectDes.slice(0,10)}</h1>
+        <h1 className="mt-4 text-gray-800   cursor-pointer"> {x.ProjectDes.slice(0,82)}</h1>
         <div className="my-4">
       
           <div className="flex space-x-1 items-center">
@@ -45,8 +48,10 @@ const getCategoryImge=(path)=>{
             </span>
             <p>Html CSS JS</p>
           </div>
-          <button className="mt-4 text-xl w-full text-white bg-green-500 py-2 rounded-xl shadow-lg">See More</button>
+          <button className="mt-4 text-xl w-full text-white bg-green-500 py-2 rounded-xl shadow-lg" >See More</button>
         </div>
+      </div>
+      </Link>
       </div>
   )
 }

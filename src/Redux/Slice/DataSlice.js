@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getFirestore, collection,getDocs } from "firebase/firestore";
 import { app } from "../../Firebase/FirebaseAuth";
@@ -19,6 +20,8 @@ const DataSlice=createSlice({
     fliterQuestions:[],
     ProjectData:[],
     fliterProjectData:[],
+    RelatedProjectData: [],
+    SeachProjectData: [],
     status:STATUS.IDEL,
   },reducers:{
     getQuestion(state,action){
@@ -42,6 +45,31 @@ const DataSlice=createSlice({
         state.fliterProjectData=filterdata
       }
       }
+ ,
+      getRealatedProject(state, action) {
+        if (state.ProjectData) {
+          const filterdata = state.ProjectData.filter(
+            (x) => x.level === action.payload
+          );
+          let related = [];
+          filterdata.map((x, index) => {
+            if (index < 3) {
+              related = [...related, x];
+            }
+          });
+  
+          state.RelatedProjectData = related;
+        }
+      },
+      searchProject(state, action) {
+        if(state.ProjectData){
+          const finddata =  state.ProjectData.filter(
+            (x) => x.projectName === action.payload
+          );
+          state.SeachProjectData = finddata;
+        }
+       
+      },
     
       },extraReducers:(builder)=>{
         builder.addCase(featchAllData.pending, (state) => {
@@ -81,4 +109,4 @@ export const featchAllData=createAsyncThunk("Info/QuestionData",async()=>{
 })
 
 export default DataSlice.reducer
-export const {getQuestion,getProjectData}=DataSlice.actions
+export const {getQuestion,getProjectData,getRealatedProject,searchProject,}=DataSlice.actions

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { doc, getFirestore, updateDoc } from "firebase/firestore";
 import { app } from '../../Firebase/FirebaseAuth';
@@ -18,18 +18,17 @@ const UpdateProject = () => {
 
 
     const [input, setInput] = useState({
-        projectName: "",
-        ProjectDes: "",
-        projectLiveLink: "",
-        projectGithubLink: "",
-        level: "",
-        Technologies: ""
+        projectName: x.projectName,
+        ProjectDes: x.ProjectDes,
+        projectLiveLink: x.projectLiveLink,
+        projectGithubLink: x.projectGithubLink,
+        level: x.level,
+        Technologies: x.Technologies
     })
 
-    console.log(projectId)
 
     const handelChange = (e) => {
-        setInput({ ...input, [e.target.name]: e.targetvalue })
+        setInput({ ...input, [e.target.name]: e.target.value })
     }
 
     const handelSubit = (e) => {
@@ -53,11 +52,6 @@ const UpdateProject = () => {
     };
 
 
-    useEffect(() => {
-        console.log("I am updateForm")
-        setInput(x)
-    }, [projectId, x]);
-
     const handelCancel = () => {
         Navigate('/Dashboard/showprojects')
     }
@@ -78,10 +72,10 @@ const UpdateProject = () => {
                     <div className="flex space-x-5 mt-3">
 
                         <select name="level" value={input.level || ""} onChange={handelChange} className='block w-[50%] px-4 py-2 mt-2 rounded-md border-4'>
-                            <option defaultValue selected className=' bg-gray-100 shadow-md'>Project Level</option>
-                            <option value="Beginner"  >Beginner</option>
-                            <option value="Intermediate"  >Intermediate</option>
-                            <option value="Advance"  >Advance</option>
+                            <option defaultValue className=' bg-gray-100 shadow-md'>Project Level</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advance">Advance</option>
                         </select>
 
 

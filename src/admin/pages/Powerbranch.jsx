@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs,deleteDoc,doc } from "firebase/firestore";
 import { app } from '../../Firebase/FirebaseAuth';
 import Addadmin from '../components/Addadmin';
-
+import { useSelector } from 'react-redux';
 
 const fireStore = getFirestore(app)
 
 const Powerbranch = () => {
 
+    const { userEmail } = useSelector((state) => state.AuthSlice)
     const [branchData, setBranchData] = useState()
     const [isAddAdmin, setIsAdmin] = useState(false)
+    const [refresh,setRefresh]=useState(false)
 
     const getAdmin = () => {
         return getDocs(collection(fireStore, 'Admin'));
@@ -22,7 +24,7 @@ const Powerbranch = () => {
         getAdmin().then((Admin) => setBranchData(Admin.docs));
         console.log("I am Power Branch")
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [isAddAdmin,refresh])
 
     const handelUser = () => {
         getUser().then((user) => setBranchData(user.docs));
@@ -34,13 +36,26 @@ const Powerbranch = () => {
     const AddadminBtn = () => {
         console.log('hello')
         setIsAdmin(true)
-        //Navigate('/Dashboard/addadmin') 
     }
+    const deleteAdmin = async (id) => {
+        await deleteDoc(doc(fireStore, "Admin", id));
+      }
+
+    const adminDelete=(id)=>{
+
+        if(userEmail==='arnabsingha9004@gmail.com'||userEmail==='indrajitdgp19@gmail.com'){
+            deleteAdmin(id)
+            setRefresh(!refresh)
+        }  
+
+    }
+
+    
 
     return (
         <div className='flex flex-col w-[100%]'>
             <section className='min-h-[8vh] bg-[#F8F9F9] flex justify-center items-center shadow-md shadow-black/20 dark:shadow-white/20 '>
-                <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl'>Power Branch</h1>
+                <h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-bold text-transparent sm:text-3xl'>Manage Accounts</h1>
             </section>
             {
                 isAddAdmin ?
@@ -99,7 +114,7 @@ const Powerbranch = () => {
                                                             <tr key={index + 1000}>
                                                                 <td className="p-2 whitespace-nowrap">
                                                                     <div className="flex items-center">
-                                                                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"><img className="rounded-full" src="https://raw.githubusercontent.com/cruip/vuejs-admin-dashboard-template/main/src/images/user-36-05.jpg" width="40" height="40" alt="Alex Shatov" /></div>
+                                                                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3"><img className="rounded-full" src="https://marketplace.canva.com/EAFEits4-uw/1/0/1600w/canva-boy-cartoon-gamer-animated-twitch-profile-photo-oEqs2yqaL8s.jpg" width="40" height="40" alt="Alex Shatov" /></div>
                                                                         <div className="font-medium text-gray-800">{x && x.data().Name}</div>
                                                                     </div>
                                                                 </td>
@@ -109,9 +124,11 @@ const Powerbranch = () => {
                                                                 <td className="p-2 whitespace-nowrap">
                                                                     <div className="text-left font-medium text-green-500">  <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Active</span></div>
                                                                 </td>
-                                                                <td className="p-2 whitespace-nowrap">
-                                                                    <div className="text-lg text-center flex justify-center items-center gap-4"><i className="fa-solid fa-file-pen"></i><i className="fa-solid fa-trash-can"></i></div>
-                                                                </td>
+                                                                {  userEmail==='arnabsingha9004@gmail.com'||userEmail==='indrajitdgp19@gmail.com' ?
+                                                                    
+                                                                    <td className="p-2 whitespace-nowrap">
+                                                                    <div className="text-lg text-center flex justify-center items-center gap-4 cursor-pointer" onClick={()=>adminDelete(x.id)}><i className="fa-solid fa-trash-can" ></i></div>
+                                                                </td>:""}
                                                             </tr>
 
                                                         )

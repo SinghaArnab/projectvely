@@ -1,10 +1,81 @@
 *{
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
+
 body::-webkit-scrollbar {
   display: none;
 }
+
+.hero{
+  background-image: url("https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80");
+ }
+ .active{
+  background-color: crimson;
+  color: white;
+  
+}
+
+
+.login{
+    background: url('https://img.freepik.com/free-photo/aerial-view-business-team_53876-124515.jpg?w=1060&t=st=1677691356~exp=1677691956~hmac=c88e576b1f8f7155a9a2f06a8f1ea2b20e073c04d119e1f4f8b9edebd1f5fceb');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.userlogin{
+  background: url('https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+  background-size: cover;
+ background-position: center center;
+ /* background-color: #A459D1; */
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.waviy {
+  position: relative;
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0,0,0,.2));
+  font-size: 25px;
+  color: white;
+}
+.waviy span {
+  font-family: 'Alfa Slab One', cursive;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  animation: waviy 1.7s infinite;
+  animation-delay: calc(.1s * var(--i));
+  
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
+  }
+}
+
+
+.logo-1 span {
+  color: #e74c3c;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 30px;
+  line-height:1.3;
+}
+
+
+
+
 
 
 .login{
@@ -325,8 +396,7 @@ tr th:nth-child(1) {
 
 .profileshadow{
   text-align: center;
-  background-image: url('https://eadn-wc01-6480865.nxedge.io/wp-content/uploads/2021/02/Background-45a-1024x256-1.png');
-  background-repeat: no-repeat;
+  background-image: url('https://cdn.indialends.com/blog/Images/PL_blog_banner.jpg');
   object-fit:cover;
   background-color: #403e3e;
   color: white;
@@ -336,4 +406,13 @@ tr th:nth-child(1) {
 
 .addadmin{
   background-image: url('https://source.unsplash.com/K4mSJ7kc0As/600x800')
+}
+
+
+
+.loginSide{
+  background: #BBD2C5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }

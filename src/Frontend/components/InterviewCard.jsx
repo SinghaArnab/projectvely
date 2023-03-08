@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getQuestion } from "../../Redux/Slice/DataSlice";
+import { getQuestion } from '../../Redux/Slice/DataSlice'
 
 
 import {getStorage,getDownloadURL,ref} from "firebase/storage"

@@ -9,6 +9,7 @@ const fireStore = getFirestore(app);
 
 const Questionlist = () => {
   const [Question, setQuestion] = useState([])
+  const [refresh, setRefresh] = useState(false)
 
   const [serchQuery, setQuery] = useState("")
 
@@ -20,7 +21,7 @@ const Questionlist = () => {
     allQuestion().then((Que) => setQuestion(Que.docs));
     console.log("I am ShowCars")
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [refresh])
 
   const uniqueCategory = [...new Set(Object.values(Question.map(x => x.data().category)))];
 
@@ -34,16 +35,16 @@ const Questionlist = () => {
         <div className="w-full mb-12 lg:px-0">
           <div
             className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded 
-     bg-neutral-900 text-white mx-auto backdrop-blur-sm "
+            bg-white text-black mx-auto backdrop-blur-sm "
           >
-            <div className="rounded-t mb-0 px-4 py-3 border-0 bg-black/50">
+            <div className="rounded-t mb-0 px-4 py-3 bg-cyan-50">
               <div className="flex flex-wrap items-center">
                 <div className="relative w-full px-4 max-w-full flex-grow flex-1 flex justify-between items-center flex-row ">
-                  <h3 className="font-semibold text-lg text-white">All Question
+                  <h3 className="font-semibold text-lg text-black ">All Question
                     <span className="ml-5  lg:bg-yellow-200 py-1 px-4 lg:text-black rounded-sm">{Question && "Total Que listed - " + Question.length}</span>
                   </h3>
 
-                  {/* <button className="bg-red-400 py-1 px-4"  onClick={refresh}> <i className="fa-solid fa-rotate-right ml-2"></i> Refresh</button> */}
+                  <button className="bg-red-400 py-1 px-4" onClick={() => setRefresh(!refresh)}> <i className="fa-solid fa-rotate-right ml-2"></i> Refresh</button>
                 </div>
               </div>
             </div>

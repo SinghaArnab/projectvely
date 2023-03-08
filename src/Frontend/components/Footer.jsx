@@ -17,10 +17,10 @@ const Footer = () => {
             <h1 className='text-md font-medium '>You can follow me On ➡️</h1>
             </div>
             <div className='flex justify-center items-center flex-row gap-6 pb-6 lg:pb-0'>
-            <a href='https://www.instagram.com/singha_arnab_45/'><i className="fa-brands fa-instagram text-[17px] lg:text-[17px] text-pink-600 hover:text-pink-400 hover:scale-110 transition ease-in-out"></i></a>
-            <a href='https://www.facebook.com/people/Arnab-Singha/pfbid0hThXzec1ryfqHE6NF4RxK4vpNTMZC9zVT65tYYGSLSbqF9D6shkSfzvFUamP1JB2l/?mibextid=ZbWKwL'><i className="fa-brands fa-facebook text-[17px] lg:text-[17px] text-blue-500 hover:text-blue-700 hover:scale-110 transition ease-in-out"></i></a>
-            <a href='https://github.com/SinghaArnab'><i className="fa-brands fa-github text-[17px] lg:text-[17px] text-white hover:text-white hover:scale-110 transition ease-in-out"></i></a>
-            <a href='https://www.linkedin.com/in/arnab-singha-904268208/'><i className="fa-brands fa-linkedin text-[17px] lg:text-[17px] text-blue-500 hover:text-blue-400 hover:scale-110 transition ease-in-out"></i></a>
+            <a href='https://www.instagram.com/singha_arnab_45/'  target="_blank" rel="noreferrer"><i className="fa-brands fa-instagram text-[17px] lg:text-[17px] text-pink-600 hover:text-pink-400 hover:scale-110 transition ease-in-out"></i></a>
+            <a href='https://www.facebook.com/people/Arnab-Singha/pfbid0hThXzec1ryfqHE6NF4RxK4vpNTMZC9zVT65tYYGSLSbqF9D6shkSfzvFUamP1JB2l/?mibextid=ZbWKwL'  target="_blank" rel="noreferrer"><i className="fa-brands fa-facebook text-[17px] lg:text-[17px] text-blue-500 hover:text-blue-700 hover:scale-110 transition ease-in-out"></i></a>
+            <a href='https://github.com/SinghaArnab'><i className="fa-brands fa-github text-[17px] lg:text-[17px] text-white hover:text-white hover:scale-110 transition ease-in-out"  target="_blank" rel="noreferrer"></i></a>
+            <a href='https://www.linkedin.com/in/arnab-singha-904268208/'><i className="fa-brands fa-linkedin text-[17px] lg:text-[17px] text-blue-500 hover:text-blue-400 hover:scale-110 transition ease-in-out"  target="_blank" rel="noreferrer"></i></a>
             </div>
             </div>
             </footer>

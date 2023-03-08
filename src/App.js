@@ -6,17 +6,23 @@ import AdminLogin from './admin/pages/AdminLogin';
 import Category from './admin/pages/Category';
 import Dashboard from './admin/pages/Dashboard';
 import Projectlist from './admin/pages/Projectlist';
+import Questionlist from './admin/pages/Questionlist';
+import Footer from './Frontend/components/Footer';
+import Profile from './admin/pages/Profile';
+import UpdateProject from './admin/components/UpdateProject';
+import Powerbranch from './admin/pages/Powerbranch';
 import './App.css';
 import Navbar from "./Frontend/components/Navbar";
 import Landing from "./Frontend/pages/Landing";
 import Project from "./Frontend/pages/Project";
 import InterviewPrep from "./Frontend/pages/InterviewPrep";
 import Question from "./Frontend/pages/Question";
-import Questionlist from './admin/pages/Questionlist';
-import Footer from './Frontend/components/Footer';
-import Profile from './admin/pages/Profile';
-import UpdateProject from './admin/components/UpdateProject';
-import Powerbranch from './admin/pages/Powerbranch';
+import ProjectDetails from './Frontend/pages/ProjectDetails';
+import AllProjects from './Frontend/pages/AllProjects';
+import Ourcourses from './Frontend/pages/Ourcourses';
+import UserLogin from './Frontend/pages/UserLogin';
+import CourseDetails from './Frontend/pages/CourseDetails';
+
 
 
 
@@ -26,11 +32,16 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          <Route path="/" element={<Navbar/>} >
+        <Route path="/" element={<Navbar/>} >
           <Route index element={<Landing/>}/>
           <Route path="/Projects" element={<Project />} />
+          <Route path="Projects/:projectID" element={<ProjectDetails />} />
           <Route path="/InterviewPrep" element={<InterviewPrep />} />
           <Route path="/Question" element={<Question />} />
+          <Route path="/allprojects" element={<AllProjects />} />
+          <Route path="/courses" element={<Ourcourses />} />
+          <Route path="/login" element={<UserLogin />} />
+          <Route path="/coursedetails" element={<CourseDetails />} />
           </Route>
 
 
