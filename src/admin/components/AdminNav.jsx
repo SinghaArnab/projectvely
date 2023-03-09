@@ -43,7 +43,7 @@ const AdminNav = () => {
     }
 
     return (
-        <div className="lg:flex lg:max-h-[100vh] ">
+        <div className="lg:flex lg:max-h-[110vh] ">
             <section className='w-[20%] max-h-[110vh] hidden md:hidden lg:block  bg-white border-r-[1px] border-cyan-400' >
                 <div className='flex pt-2 px-2 border-b-[1px] mb-10 bg-white'>
                     <div className="flex flex-no-shrink items-center mr-6  text-grey-darkest">
@@ -53,8 +53,8 @@ const AdminNav = () => {
 
                 <div className='sidenav'>
 
-                    <li className="border-t md:border-none pr-7 hover:bg-white  hover:text-red-400 box arrow-left" type="checkbox" >
-                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold font-bold w-full ${pathname === "/Dashboard" ? 'active' : "bg-white"}`}><i className="fa-solid fa-house-chimney "></i> <span className="ml-2">Dashboard</span> </Link>
+                    <li className="border-t md:border-none pr-7 hover:bg-white  hover:text-red-400 box arrow-left " type="checkbox " >
+                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-2 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold font-bold w-full ${pathname === "/Dashboard" ? 'active py-3' : "bg-white"}`}><i className="fa-solid fa-house-chimney "></i> <span className="ml-2 ">Dashboard</span> </Link>
                     </li>
 
 
@@ -75,6 +75,12 @@ const AdminNav = () => {
 
                     <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
                         <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-clipboard"></i> <span className="ml-2"> Category</span></NavLink>
+                    </li>
+                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                        <NavLink to="/Dashboard/Coursecategory" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-address-card"></i> <span className="ml-2">Course Category</span></NavLink>
+                    </li>
+                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                        <NavLink to="/Dashboard/ShowCourseContain" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-address-card"></i> <span className="ml-2">Show Course Contain</span></NavLink>
                     </li>
                     <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
                         <NavLink to="/Dashboard/profile" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-address-card"></i> <span className="ml-2">Profile</span></NavLink>
@@ -118,6 +124,12 @@ const AdminNav = () => {
 
                         <li className="border-t md:border-none ml-0 lg:ml-4" >
                             <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">Category</NavLink>
+                        </li>
+                        <li className="border-t md:border-none ml-0 lg:ml-4" >
+                            <NavLink to="/Dashboard/Coursecategory" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">Course Category</NavLink>
+                        </li>
+                        <li className="border-t md:border-none ml-0 lg:ml-4" >
+                            <NavLink to="/Dashboard/ShowCourseContain" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker">Show Course Contain</NavLink>
                         </li>
 
                         <li className="border-t md:border-none ml-0 lg:ml-4" >

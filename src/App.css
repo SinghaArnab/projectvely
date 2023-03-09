@@ -305,6 +305,26 @@ tr th:nth-child(1) {
   left: 100%;
   top: 0;
 }
+.icon3::after{
+  content: '';
+  display: block;
+  position: absolute;
+  border-top: 23px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 12px solid rgb(166, 117, 168);
+  left: 100%;
+  top: 0;
+}
+.icon4::after{
+  content: '';
+  display: block;
+  position: absolute;
+  border-top: 23px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 12px solid rgba(182, 119, 26, 0.897);
+  left: 100%;
+  top: 0;
+}
 
 
 

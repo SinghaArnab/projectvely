@@ -47,7 +47,7 @@ const UpdateProject = () => {
             projectGithubLink: input.projectGithubLink,
             Technologies: input.Technologies,
             level: input.level,
-            userEmail: userEmail
+            adminEmail: userEmail
         });
     };
 
