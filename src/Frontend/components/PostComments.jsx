@@ -47,7 +47,7 @@ const commentSubmit=(e)=>{
     <form className="w-[95%] bg-white rounded-lg px-4 mx-2 mt-2" onSubmit={commentSubmit}>
           <h2 className="px-4 pt-3 pb-2 text-gray-800 text-lg">Add a new comment</h2>
           <div className="w-[100%] md:w-full px-3 mb-2 mt-2">
-             <textarea value={Comment} onChange={(e)=>setComment(e.target.value)} class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
+             <textarea value={Comment} onChange={(e)=>setComment(e.target.value)} className="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" name="body" placeholder='Type Your Comment' required></textarea>
           </div>
           <div className="md:w-[100%] flex items-start  px-3">
              <div className="flex items-start w-1/2 text-gray-700 px-2 mr-auto">

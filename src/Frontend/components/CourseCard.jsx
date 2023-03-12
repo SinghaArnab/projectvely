@@ -43,7 +43,7 @@ const CourseCard = ({x}) => {
             <p>Advance</p>
           </div>
           <div className="flex space-x-1 p-2  items-center font-bold text-lg">
-            <p><i class="fa-sharp fa-solid fa-indian-rupee-sign pr-2"></i>{x.Price}</p>
+            <p><i className="fa-sharp fa-solid fa-indian-rupee-sign pr-2"></i>{x.Price}</p>
           </div>
           <div className="flex space-x-1 p-2 justify-between items-center">
             <img className='h-8 w-8 rounded-full' src="https://geeks-react.netlify.app/static/media/avatar-3.d3ce7f20113e7d124501.jpg" alt="" />

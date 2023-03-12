@@ -46,52 +46,52 @@ const ProjectDetails = () => {
 
   return (
     <div className="">
-      <div class="text-gray-900 pt-12 pr-0 pb-14 pl-0 bg-white">
+      <div className="text-gray-900 pt-12 pr-0 pb-14 pl-0 bg-white">
         <div
-          class="w-full pt-4 pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16
+          className="w-full pt-4 pr-5 pb-6 pl-5 mt-0 mr-auto mb-0 ml-auto space-y-5 sm:py-8 md:py-12 sm:space-y-8 md:space-y-16
         max-w-[100%]"
         >
-          <div class="flex flex-col items-center sm:px-5 md:flex-row">
-            <div class="flex flex-col items-start justify-center w-full h-full pt-6 pr-0 pb-6 pl-0 mb-6 md:mb-0 md:w-1/2">
+          <div className="flex flex-col items-center sm:px-5 md:flex-row">
+            <div className="flex flex-col items-start justify-center w-full h-full pt-6 pr-0 pb-6 pl-0 mb-6 md:mb-0 md:w-1/2">
               <div
-                class="flex flex-col items-start justify-center h-full space-y-3 transform md:pr-10 lg:pr-16
+                className="flex flex-col items-start justify-center h-full space-y-3 transform md:pr-10 lg:pr-16
               md:space-y-5"
               >
                 <div
-                  class=" bg-blue-500 flex items-center leading-none rounded-full text-gray-50 pt-1.5 pr-3 pb-1.5 pl-2
+                  className=" bg-blue-500 flex items-center leading-none rounded-full text-gray-50 pt-1.5 pr-3 pb-1.5 pl-2
                 uppercase "
                 >
-                  <p class="inline text-xs font-medium">
+                  <p className="inline text-xs font-medium">
                     {state && state.Technologies}
                   </p>
                 </div>
-                <h1 class="text-3xl font-bold leading-none lg:text-5xl xl:text-5xl text-center">
+                <h1 className="text-3xl font-bold leading-none lg:text-5xl xl:text-5xl text-center">
                   {state && state.projectName}
                 </h1>
-                <div class="pt-2 pr-0 pb-0 pl-0">
-                  <p class="text-sm font-medium inline">Deatils - </p>
-                  <p class="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1">
+                <div className="pt-2 pr-0 pb-0 pl-0">
+                  <p className="text-sm font-medium inline">Deatils - </p>
+                  <p className="inline text-sm font-medium mt-0 mr-1 mb-0 ml-1">
                     {state && state.ProjectDes}
                   </p>
-                  <p class="text-gray-200 text-sm font-medium inline mt-0 mr-1 mb-0 ml-1">
+                  <p className="text-gray-200 text-sm font-medium inline mt-0 mr-1 mb-0 ml-1">
                     1hr 20min. read
                   </p>
                 </div>
                 <div
-                  class=" bg-red-400 flex items-center leading-none rounded-full text-gray-50 pt-1.5 pr-3 pb-1.5 pl-2
+                  className=" bg-red-400 flex items-center leading-none rounded-full text-gray-50 pt-1.5 pr-3 pb-1.5 pl-2
                 uppercase "
                 >
-                  <p class="inline text-xs font-medium">
+                  <p className="inline text-xs font-medium">
                     {state && state.level}
                   </p>
                 </div>
               </div>
             </div>
-            <div class="w-full md:w-1/2 ">
-              <div class="block">
+            <div className="w-full md:w-1/2 ">
+              <div className="block">
                 <img
                   src={imageurl && imageurl}
-                  class="object-cover rounded-lg max-h-64 sm:max-h-96 btn- w-full h-full" alt="img"
+                  className="object-cover rounded-lg max-h-64 sm:max-h-96 btn- w-full h-full" alt="img"
                 />
               </div>
             </div>
@@ -110,30 +110,30 @@ const ProjectDetails = () => {
         </div>
       </div>
 
-      <div class="bg-white  pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto w-[100%] ">
-        <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto w-[100%] sm:px-6 lg:px-8">
-          <div class="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:w-[80%] w-[100%] sm:px-6 lg:px-8">
-            <div class="shadow-2xl mt-5 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
-              <div class="pt--10 pr-0 pb-10 pl-0">
-                <div class="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
-                  <div class="sm:flex sm:items-center sm:justify-between sm:space-x-5">
-                    <div class="flex items-center flex-1 min-w-0">
+      <div className="bg-white  pr-0 pb-12 pl-0 mt-0 mr-auto mb-0 ml-auto w-[100%] ">
+        <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto w-[100%] sm:px-6 lg:px-8">
+          <div className="pt-0 pr-4 pb-0 pl-4 mt-0 mr-auto mb-0 ml-auto sm:w-[80%] w-[100%] sm:px-6 lg:px-8">
+            <div className="shadow-2xl mt-5 mr-0 mb-0 ml-0 pt-4 pr-10 pb-4 pl-10 flow-root rounded-lg sm:py-2">
+              <div className="pt--10 pr-0 pb-10 pl-0">
+                <div className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
+                  <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
+                    <div className="flex items-center flex-1 min-w-0">
                       <img
                         src="https://d34u8crftukxnk.cloudfront.net/slackpress/prod/sites/6/SlackLogo_CompanyNews_SecondaryAubergine_Hero.jpg?d=500x500&amp;f=fill"
-                        class="flex-shrink-0 object-cover rounded-full btn- w-10 h-10" alt="img"
+                        className="flex-shrink-0 object-cover rounded-full btn- w-10 h-10" alt="img"
                       />
-                      <div class="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                        <p class="text-lg font-bold text-gray-800 truncate">
+                      <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
+                        <p className="text-lg font-bold text-gray-800 truncate">
                           project Name
                         </p>
-                        <p class="text-gray-600 text-md ">
+                        <p className="text-gray-600 text-md ">
                           {state && state.projectName}
                         </p>
                       </div>
                     </div>
-                    <div class="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
+                    <div className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:mt-0">
                       <button
-                        class="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
+                        className="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
                     duration-200 hover:bg-gray-700 rounded-lg"
                       >
                         Apply
@@ -142,29 +142,29 @@ const ProjectDetails = () => {
                   </div>
                 </div>
 
-                <div class="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
-                  <div class="sm:flex sm:items-center sm:justify-between sm:space-x-5">
-                    <div class="flex items-center flex-1 min-w-0">
+                <div className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
+                  <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
+                    <div className="flex items-center flex-1 min-w-0">
                       <img
                         src="https://www.growthmarketingpro.com/wp-content/uploads/2019/10/basecamp-logo.png"
-                        class="flex-shrink-0 object-cover rounded-full btn- w-10 h-10" alt="img"
+                        className="flex-shrink-0 object-cover rounded-full btn- w-10 h-10" alt="img"
                       />
-                      <div class="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                        <p class="text-lg font-bold text-gray-800 truncate">
+                      <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
+                        <p className="text-lg font-bold text-gray-800 truncate">
                           Technologies used
                         </p>
-                        <p class="text-gray-600 text-md">
+                        <p className="text-gray-600 text-md">
                           {state && state.Technologies}
                         </p>
                       </div>
                     </div>
                     <div
-                      class="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
+                      className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
                   sm:mt-0"
                     >
                       <a
                         href="#none"
-                        class="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
+                        className="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
                     duration-200 hover:bg-gray-700 rounded-lg" alt="img"
                       >
                         Apply
@@ -173,30 +173,30 @@ const ProjectDetails = () => {
                   </div>
                 </div>
 
-                <div class="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
-                  <div class="sm:flex sm:items-center sm:justify-between sm:space-x-5">
-                    <div class="flex items-center flex-1 min-w-0">
+                <div className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
+                  <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
+                    <div className="flex items-center flex-1 min-w-0">
                       <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3959Cj16Wx6dYP95pAkrF4-oycon_BpGvcA&usqp=CAU"
-                        class="flex-shrink-0
+                        className="flex-shrink-0
                     object-cover rounded-full btn- w-10 h-10" alt="img"
                       />
-                      <div class="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                        <p class="text-lg font-bold text-gray-800 truncate">
+                      <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
+                        <p className="text-lg font-bold text-gray-800 truncate">
                           level
                         </p>
-                        <p class="text-gray-600 text-md">
+                        <p className="text-gray-600 text-md">
                           {state && state.level}
                         </p>
                       </div>
                     </div>
                     <div
-                      class="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
+                      className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
                   sm:mt-0"
                     >
                       <a
                         href="#none"
-                        class="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
+                        className="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
                     duration-200 hover:bg-gray-700 rounded-lg"
                       >
                         Apply
@@ -205,29 +205,29 @@ const ProjectDetails = () => {
                   </div>
                 </div>
 
-                <div class="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
-                  <div class="sm:flex sm:items-center sm:justify-between sm:space-x-5">
-                    <div class="flex items-center flex-1 min-w-0">
+                <div className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
+                  <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
+                    <div className="flex items-center flex-1 min-w-0">
                       <img
                         src="https://i.pinimg.com/736x/b5/1b/78/b51b78ecc9e5711274931774e433b5e6.jpg"
-                        class="flex-shrink-0
+                        className="flex-shrink-0
                     object-cover rounded-full btn- w-10 h-10" alt="img"
                       />
-                      <div class="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                        <p class="text-lg font-bold text-gray-800 truncate">
+                      <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
+                        <p className="text-lg font-bold text-gray-800 truncate">
                           project GithubLink
                         </p>
-                        <p class="text-gray-600 text-md break-words	">
+                        <p className="text-gray-600 text-md break-words	">
                           {state && state.projectGithubLink}
                         </p>
                       </div>
                     </div>
                     <div
-                      class="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
+                      className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
                   sm:mt-0"
                     >
                       <button
-                        class="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
+                        className="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
                     duration-200 hover:bg-gray-700 rounded-lg"
                       >
                         Apply
@@ -236,29 +236,29 @@ const ProjectDetails = () => {
                   </div>
                 </div>
 
-                <div class="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
-                  <div class="sm:flex sm:items-center sm:justify-between sm:space-x-5">
-                    <div class="flex items-center flex-1 min-w-0">
+                <div className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
+                  <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
+                    <div className="flex items-center flex-1 min-w-0">
                       <img
                         src="https://pbs.twimg.com/profile_images/1377713636760674304/OrO9FW3q_400x400.png"
-                        class="flex-shrink-0 object-cover rounded-full btn- w-10 h-10" alt="img"
+                        className="flex-shrink-0 object-cover rounded-full btn- w-10 h-10" alt="img"
                       />
-                      <div class="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                        <p class="text-lg font-bold text-gray-800 truncate">
+                      <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
+                        <p className="text-lg font-bold text-gray-800 truncate">
                           project Hosted Link
                         </p>
-                        <p class="text-gray-600 text-md">
+                        <p className="text-gray-600 text-md">
                           {state && state.projectLiveLink}
                         </p>
                       </div>
                     </div>
                     <div
-                      class="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
+                      className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
                   sm:mt-0"
                     >
                       <a
                         href="#none"
-                        class="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
+                        className="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
                     duration-200 hover:bg-gray-700 rounded-lg"
                       >
                         Apply
@@ -267,29 +267,29 @@ const ProjectDetails = () => {
                   </div>
                 </div>
 
-                <div class="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
-                  <div class="sm:flex sm:items-center sm:justify-between sm:space-x-5">
-                    <div class="flex items-center flex-1 min-w-0">
+                <div className="pt-5 pr-0 pb-0 pl-0 mt-5 mr-0 mb-0 ml-0">
+                  <div className="sm:flex sm:items-center sm:justify-between sm:space-x-5">
+                    <div className="flex items-center flex-1 min-w-0">
                       <img
                         src="https://www.freepnglogos.com/uploads/logo-gmail-png/logo-gmail-png-gmail-icons-png-vector-icons-and-png-backgrounds-18.png"
-                        class="flex-shrink-0 object-cover rounded-full btn- w-10 h-10" alt="img"
+                        className="flex-shrink-0 object-cover rounded-full btn- w-10 h-10" alt="img"
                       />
-                      <div class="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
-                        <p class="text-lg font-bold text-gray-800 truncate">
+                      <div className="mt-0 mr-0 mb-0 ml-4 flex-1 min-w-0">
+                        <p className="text-lg font-bold text-gray-800 truncate">
                           Owner's Email
                         </p>
-                        <p class="text-gray-600 text-md">
+                        <p className="text-gray-600 text-md">
                           {state && state.userEmail}
                         </p>
                       </div>
                     </div>
                     <div
-                      class="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
+                      className="mt-4 mr-0 mb-0 ml-0 pt-0 pr-0 pb-0 pl-14 flex items-center sm:space-x-6 sm:pl-0 sm:justify-end
                   sm:mt-0"
                     >
                       <a
                         href="#none"
-                        class="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
+                        className="bg-gray-800 pt-2 pr-6 pb-2 pl-6 text-lg font-medium text-gray-100 transition-all
                     duration-200 hover:bg-gray-700 rounded-lg"
                       >
                         Apply
@@ -370,7 +370,7 @@ const ProjectDetails = () => {
           <div className=" rounded-full  text-white text-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="mx-auto mt-8 h-16 w-16 text-green-400"
+              className="mx-auto mt-8 h-16 w-16 text-green-400"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -402,7 +402,7 @@ const ProjectDetails = () => {
         </div>
       </div>
 
-      <div class="grid grid-cols-12 sm:px-5 gap-x-8 gap-y-16 m-5 mb-10">
+      <div className="grid grid-cols-12 sm:px-5 gap-x-8 gap-y-16 m-5 mb-10">
         {RelatedProjectData.map((x, index) => {
           return <RealtedCard x={x} key={index} />;
         })}
