@@ -1,10 +1,31 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { app } from '../../Firebase/FirebaseAuth';
+
+
+const auth = getAuth(app)
 
 const Profile = () => {
 
     const [isUpdate, setUpdate] = useState(false)
     const { userEmail } = useSelector((state) => state.AuthSlice)
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState(false);
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
+    const handleResetPassword = async (event) => {
+        event.preventDefault();
+        try {
+            await sendPasswordResetEmail(auth, email)
+            setMessage(true)
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <div className='flex flex-col min-h-auto lg:min-h-[90vh]'>
             <section className='min-h-[8vh] bg-[#F8F9F9] flex justify-center items-center shadow-md shadow-black/20 dark:shadow-white/20 lg:mb-4'>
@@ -39,16 +60,19 @@ const Profile = () => {
 
                             {isUpdate &&
 
-                                <div className=' absolute flex w-[100%] lg:w-[96%] h-[50%]  bg-neutral-900  bottom-0'>
-                                    <form action="" className="w-full px-4 lg:px-0 mx-auto flex flex-col justify-center items-center">
-                                        <div className="pb-2 pt-4 w-[80%] lg:w-[60%]">
-                                            <input type="email" name="email" id="email" placeholder="Email" className="block w-[100%] p-4 text-lg rounded-sm bg-black" />
+                                <div className=' absolute flex w-[100%] lg:w-[96%] h-[55%]  bg-neutral-900  bottom-0'>
+                                    <form action="" className="w-full px-4 lg:px-0 mx-auto flex flex-col justify-center items-center" onSubmit={handleResetPassword}>
+                                        <div className='text-[20px] text-white/70 mb-[20px]'>
+                                           {!message ? <span>Write Your Register Email Id for Update your Password </span> : <span className='text-red-600'>Reset email sent. Check your inbox for further instructions.</span> }
                                         </div>
+
+
                                         <div className="pb-2 pt-4 w-[80%] lg:w-[60%]">
-                                            <input className="block w-full p-4 text-lg rounded-sm bg-black" type="password" name="password" id="password" placeholder="Password" />
+                                            <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" className="block w-[100%] p-4 text-lg rounded-sm bg-black" />
                                         </div>
+
                                         <div className="px-4 pb-1 pt-2 flex gap-4 w-[60%]">
-                                            <button className="uppercase block w-full h-[40px] p-1 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Update</button>
+                                            <button type='submit' className="uppercase block w-full h-[40px] p-1 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Update</button>
                                             <button onClick={() => setUpdate(false)} className="uppercase block w-full h-[40px] p-1 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Cancel</button>
                                         </div>
 

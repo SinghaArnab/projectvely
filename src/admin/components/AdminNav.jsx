@@ -53,39 +53,39 @@ const AdminNav = () => {
 
                 <div className='sidenav'>
 
-                    <li className="border-t md:border-none pr-7 hover:bg-white  hover:text-red-400 box arrow-left " type="checkbox " >
-                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-2 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold font-bold w-full ${pathname === "/Dashboard" ? 'active py-3' : "bg-white"}`}><i className="fa-solid fa-house-chimney "></i> <span className="ml-2 ">Dashboard</span> </Link>
+                    <li className="border-t md:border-none pr-7 hover:bg-red-400  hover:text-white box arrow-left " type="checkbox " >
+                        <Link to="/Dashboard" className={`block md:inline-block px-4 py-2 no-underline hover:bg-red-400  hover:text-white text-grey-darkest hover:text-grey-darker hover:font-semibold font-bold w-full ${pathname === "/Dashboard" ? 'active py-3' : "bg-white"}`}><i className="fa-solid fa-house-chimney "></i> <span className="ml-2 ">Dashboard</span> </Link>
                     </li>
 
 
-                    <li className="border-t md:border-none pr-7 hover:bg-white hover:text-red-400  box arrow-left">
+                    <li className="border-t md:border-none pr-7 hover:bg-red-400 hover:text-white  box arrow-left">
                         <NavLink to="/Dashboard/AddQuestion" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:font-semibold  w-full"><i className="fa-solid fa-square-plus"></i> <span className="ml-2">Add Question</span></NavLink>
                     </li>
 
-                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400 " >
+                    <li className="border-t md:border-none pr-7  hover:bg-red-400 hover:text-white " >
                         <NavLink to="/Dashboard/AddProjects" className=" block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-square-plus"></i> <span className="ml-2">Add Projects</span></NavLink>
                     </li>
 
-                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                    <li className="border-t md:border-none pr-7  hover:bg-red-400 hover:text-white" >
                         <NavLink to="/Dashboard/allquestion" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-list-check"></i> <span className="ml-2"> Question List</span></NavLink>
                     </li>
-                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                    <li className="border-t md:border-none pr-7  hover:bg-red-400 hover:text-white" >
                         <NavLink to="/Dashboard/showprojects" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-bars-progress"></i> <span className="ml-2"> Project List</span></NavLink>
                     </li>
 
-                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                    <li className="border-t md:border-none pr-7  hover:bg-red-400 hover:text-white" >
                         <NavLink to="/Dashboard/Category" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-clipboard"></i> <span className="ml-2"> Category</span></NavLink>
                     </li>
-                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                    <li className="border-t md:border-none pr-7  hover:bg-red-400 hover:text-white" >
                         <NavLink to="/Dashboard/Coursecategory" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-address-card"></i> <span className="ml-2">Course Category</span></NavLink>
                     </li>
-                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                    <li className="border-t md:border-none pr-7  hover:bg-red-400 hover:text-white" >
                         <NavLink to="/Dashboard/ShowCourseContain" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-address-card"></i> <span className="ml-2">Show Course Contain</span></NavLink>
                     </li>
-                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                    <li className="border-t md:border-none pr-7  hover:bg-red-400 hover:text-white" >
                         <NavLink to="/Dashboard/profile" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-address-card"></i> <span className="ml-2">Profile</span></NavLink>
                     </li>
-                    <li className="border-t md:border-none pr-7  hover:bg-white hover:text-red-400" >
+                    <li className="border-t md:border-none pr-7  hover:bg-red-400 hover:text-white" >
                         <NavLink to="/Dashboard/powerbranch" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker hover:font-semibold  w-full"><i className="fa-solid fa-people-group"></i> <span className="ml-2">Manage Accounts</span></NavLink>
                     </li>
 

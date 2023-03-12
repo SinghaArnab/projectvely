@@ -20,6 +20,8 @@ const AddCourseContain = ({ categoryName }) => {
         TopicAnswer: "",
     })
 
+    const date = new Date();
+
 
     const handelChange = (e) => {
         setData({ ...CouseData, [e.target.name]: e.target.value })
@@ -43,7 +45,7 @@ const AddCourseContain = ({ categoryName }) => {
             CourseLink: CouseData.CourseLink,
             TopicQuestion: CouseData.TopicQuestion,
             TopicAnswer: CouseData.TopicAnswer,
-            Date: new Date().toLocaleDateString(),
+            Date: date.toISOString(),
             Time: new Date().toLocaleTimeString(),
             adminEmail: userEmail
         })

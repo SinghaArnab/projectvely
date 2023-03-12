@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getFirestore, collection,getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs,query,orderBy } from "firebase/firestore";
 import { app } from "../../Firebase/FirebaseAuth";
 
 const fireStoreDb = getFirestore(app);
@@ -22,6 +22,10 @@ const DataSlice=createSlice({
     fliterProjectData:[],
     RelatedProjectData: [],
     SeachProjectData: [],
+    CourseCategory:[],
+    CourseContent:[],
+    FilterContent:[],
+    CommentsData:[],
     status:STATUS.IDEL,
   },reducers:{
     getQuestion(state,action){
@@ -70,6 +74,11 @@ const DataSlice=createSlice({
         }
        
       },
+      courseDetails(state,action){
+      
+        const data= state.CourseContent.filter((x)=>x.CourseName===action.payload)
+        state.FilterContent=data
+       }
     
       },extraReducers:(builder)=>{
         builder.addCase(featchAllData.pending, (state) => {
@@ -80,10 +89,13 @@ const DataSlice=createSlice({
             state.QuestionData=action.payload.Questiondata
             state.QuestionCategoryData=action.payload.CategoryQData
             state.ProjectData=action.payload.ProjectData
+            state.CourseCategory = action.payload.cousecategory;
+            state.CourseContent = action.payload.courseContent;
+            state.CommentsData = action.payload.Commentsdata;
             console.log("Success");
             state.status=STATUS.IDEL
           })
-          .addCase(featchAllData.rejected,(state,actions)=>{
+          .addCase(featchAllData.rejected,(state)=>{
             console.log("rejected");
             state.status=STATUS.ERROR
           })
@@ -95,18 +107,31 @@ export const featchAllData=createAsyncThunk("Info/QuestionData",async()=>{
   const allQuestionData = await getDocs(collection(fireStoreDb, "Question"));
   const allCategoryData = await getDocs(collection(fireStoreDb, "SubjectCategory"));
   const allProjectData = await getDocs(collection(fireStoreDb, "Projects"));
+  const courseCategory = await getDocs(collection(fireStoreDb, "CourseCategory"));
+  const courseContent = await getDocs(query(collection(fireStoreDb, 'CourseContent'), orderBy('Date', 'asc')));
+  const Comments = await getDocs(collection(fireStoreDb, "userComments"));
 
   let Questiondata=[] 
   let CategoryQData=[] 
-  let ProjectData=[] 
+  let ProjectData=[]
+  let cousecate = [];
+  let cousecont= [];
+  let comment= [];
+ 
   
   allQuestionData.forEach((doc) => { Questiondata=[...Questiondata,doc.data()] })
   allCategoryData.forEach((doc) => { CategoryQData=[...CategoryQData,doc.data()] })
   allProjectData.forEach((doc) => { ProjectData=[...ProjectData,doc.data()] })
+  courseCategory.forEach((doc) => {cousecate = [...cousecate, doc.data()];});
+  courseContent.forEach((doc) => {cousecont = [...cousecont, doc.data()];});
+  Comments.forEach((doc) => {comment = [...comment, doc.data()];});
 
 
-   return {Questiondata:Questiondata,CategoryQData:CategoryQData,ProjectData:ProjectData}
+
+   return {Questiondata:Questiondata,CategoryQData:CategoryQData,ProjectData:ProjectData ,cousecategory:cousecate,
+    courseContent:cousecont,
+    Commentsdata:comment}
 })
 
 export default DataSlice.reducer
-export const {getQuestion,getProjectData,getRealatedProject,searchProject,}=DataSlice.actions
+export const {getQuestion,getProjectData,getRealatedProject,searchProject, courseDetails}=DataSlice.actions

@@ -12,9 +12,9 @@ const QuestionCard = ({ x, no }) => {
             </svg>
           </span>
         </summary>
-        <div className=" bg-[#472183] text-white transition ease-in-out delay-150">
+        <div className=" bg-black/60 text-white transition ease-in-out delay-150">
           <p className=" mt-3 group-open:animate-fadeIn transition duration-300 delay-150 ease-in-out text-lg p-3">
-            {x.answer}
+           {x.answer}
           </p>
         </div>
       </details>

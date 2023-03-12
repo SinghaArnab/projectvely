@@ -43,8 +43,8 @@ function App() {
           <Route path="/Question" element={<Question />} />
           <Route path="/allprojects" element={<AllProjects />} />
           <Route path="/courses" element={<Ourcourses />} />
+          <Route path="/courses/:courseName" element={<CourseDetails />} />
           <Route path="/login" element={<UserLogin />} />
-          <Route path="/coursedetails" element={<CourseDetails />} />
           </Route>
 
 

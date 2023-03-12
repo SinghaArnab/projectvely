@@ -50,6 +50,10 @@ const UpdateContent = () => {
         });
     };
 
+    const handelCancel=()=>{
+        Navigate(-1)
+    }
+
     return (
         <div className="w-[100%] min-h-[85vh] flex justify-center items-start">
             <form action="" className="form bg-white p-6 my-10 relative shadow-lg sm:w-[45%]" onSubmit={handelSubmit}>
@@ -67,7 +71,8 @@ const UpdateContent = () => {
                 <textarea name='TopicAnswer' value={CouseData.TopicAnswer} onChange={handelChange} cols="10" rows="3" placeholder="Tell us about desired property" className="border p-2 mt-3 w-full min-h-[250px]"></textarea>
 
 
-                <input type="submit" value="Update" className="w-full mt-6 bg-yellow-600 hover:bg-yellow-500 text-white font-semibold p-3" />
+                <input type="submit" value="Update" className="w-full mt-6 bg-yellow-600 hover:bg-yellow-500 text-white font-semibold p-3 cursor-pointer" />
+                <input  onClick={handelCancel} value="Cancel" className="w-full mt-6 bg-red-400 hover:bg-red-500 text-white font-semibold p-3 text-center cursor-pointer" />
 
             </form>
 

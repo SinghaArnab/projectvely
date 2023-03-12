@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { signOut,getAuth } from 'firebase/auth'
+import { app } from "../../Firebase/FirebaseAuth";
 
 
+const auth=getAuth(app)
 const AuthSlice=createSlice({
     name:'authSlice',
     initialState:{
@@ -9,6 +12,10 @@ const AuthSlice=createSlice({
     reducers:{
         singInUser(state,action){
             state.userEmail=action.payload
+        },
+        SignoutUser(state){
+            signOut(auth) 
+            state.userEmail=""
         }
     }
 })
@@ -16,5 +23,5 @@ const AuthSlice=createSlice({
 
 export default AuthSlice.reducer
 
-export const {singInUser}=AuthSlice.actions
+export const {singInUser,SignoutUser}=AuthSlice.actions
 
