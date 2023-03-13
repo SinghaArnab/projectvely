@@ -25,7 +25,7 @@ const ProjectDetails = () => {
   const { CommentsData } = useSelector(
     (state) => state.Comments
   );
-  const findData = ProjectData.find((x) => x.id === projectID);
+  const findData = ProjectData.find((x) => x.id === projectID );
   const dispatch = useDispatch();
 
   console.log(findData);

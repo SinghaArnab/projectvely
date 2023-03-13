@@ -68,12 +68,13 @@ const UpdateContent = () => {
                 <label for="email" className="block text-sm font-medium text-yellow-600">Topic Question</label>
                 <input type="text" name="TopicQuestion" value={CouseData.TopicQuestion} onChange={handelChange} placeholder="Enter Question" className="border p-2 w-full mt-1" required />
                 <label for="email" className="block text-sm font-medium text-yellow-600"> Topic Answer</label>
-                <textarea name='TopicAnswer' value={CouseData.TopicAnswer} onChange={handelChange} cols="10" rows="3" placeholder="Tell us about desired property" className="border p-2 mt-3 w-full min-h-[250px]"></textarea>
+                <textarea name='TopicAnswer' value={CouseData.TopicAnswer} onChange={handelChange} cols="10" rows="3" placeholder="Tell us about desired property" className="border p-2 mt-3 w-full min-h-[200px]"></textarea>
 
 
+                <div className='flex gap-4'>
                 <input type="submit" value="Update" className="w-full mt-6 bg-yellow-600 hover:bg-yellow-500 text-white font-semibold p-3 cursor-pointer" />
                 <input  onClick={handelCancel} value="Cancel" className="w-full mt-6 bg-red-400 hover:bg-red-500 text-white font-semibold p-3 text-center cursor-pointer" />
-
+                </div>
             </form>
 
         </div>

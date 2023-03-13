@@ -25,6 +25,9 @@ import CourseDetails from './Frontend/pages/CourseDetails';
 import CourseCategory from './admin/pages/CourseCategory';
 import ShowContain from './admin/pages/ShowContain';
 import UpdateContent from './admin/components/UpdateContent';
+import Userprofile from './Frontend/pages/Userprofile';
+import FUpdateproject from './Frontend/components/FUpdateproject';
+import FShowProjects from './Frontend/components/FShowProjects';
 
 
 
@@ -37,15 +40,28 @@ function App() {
 
         <Route path="/" element={<Navbar/>} >
           <Route index element={<Landing/>}/>
-          <Route path="/Projects" element={<Project />} />
-          <Route path="Projects/:projectID" element={<ProjectDetails />} />
+          <Route path="/Projects/:projectlevel" element={<Project />} />
+          <Route path="ProjectsDet/:projectID" element={<ProjectDetails />} />
           <Route path="/InterviewPrep" element={<InterviewPrep />} />
-          <Route path="/Question" element={<Question />} />
+          <Route path="/Question/:level?/:category?" element={<Question />} />
           <Route path="/allprojects" element={<AllProjects />} />
           <Route path="/courses" element={<Ourcourses />} />
           <Route path="/courses/:courseName" element={<CourseDetails />} />
           <Route path="/login" element={<UserLogin />} />
+
+
+          <Route exact path="/userProfile" element={<Userprofile />}>
+          <Route index element={<Profile />}/>
+          <Route path="/userProfile/addProject" element={<AddProjects/>}/>
+          <Route path="/userProfile/showProject" element={<FShowProjects/>}/>
+          <Route path="/userProfile/updateproject" element={<FUpdateproject/>}/>
           </Route>
+
+          
+          </Route>
+
+        
+       
 
 
           <Route path='/adminlogin' element={<AdminLogin />} />

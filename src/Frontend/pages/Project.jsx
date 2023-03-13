@@ -1,13 +1,23 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
+import { getProjectData } from '../../Redux/Slice/DataSlice'
+
 
 const Project = () => {
+
+  const {projectlevel}=useParams()
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     window.scroll(0,0)  
     console.log("Frontend Projects")
-  },[])
+    dispatch(getProjectData(projectlevel));
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[projectlevel])
+  
 const {fliterProjectData}=useSelector((state)=>state.QuestionData)
   return (
     <div className="min-h-screen bg-gradient-to-tr flex justify-center items-center ">

@@ -21,7 +21,7 @@ const getCategoryImge=(path)=>{
 
   return (
     <div className="">
-    <Link to={`/Projects/${x.id}`}>
+    <Link to={`/ProjectsDet/${x.id}`}>
     <div className="max-w-lg bg-white px-6 pt-6 pb-2 sm:m-0 m-3 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
         <h3 className="mb-3 text-xl font-bold text-indigo-600">{x.projectName}</h3>
         <div className="relative">

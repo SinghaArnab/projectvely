@@ -1,18 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
-import { getProjectData } from '../../Redux/Slice/DataSlice'
 
 const Landing = () => {
-  const dispatch = useDispatch();
-
+ 
   const navigate = useNavigate();
 
   const sendLevel = (level) => {
     console.log(level);
-    navigate("/Projects");
-    dispatch(getProjectData(level));
+    navigate(`/Projects/${level}`);
   };
 
   return (
@@ -22,8 +18,8 @@ const Landing = () => {
 
         <main className="px-4 sm:px-6 lg:px-8 z-10 w-[100%] flex justify-center items-center flex-col">
           <div className="text-center">
-            <h2 className="text-4xl tracking-tight leading-10 font-medium sm:text-5xl text-white sm:leading-none md:text-6xl">
-              <span className="text-green-400 font-bold">ProjectVally</span> Boost
+            <h2 className="text-2xl tracking-tight leading-10 font-medium sm:text-5xl text-white sm:leading-none md:text-6xl">
+              <span className="text-green-400 font-bold text-4xl lg:text-7xl">Educate</span> Boost
               Your Skills
             </h2>
             <p className="mt-3 text-white sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">

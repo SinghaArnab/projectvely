@@ -1,39 +1,34 @@
-import React,{useEffect,useState} from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getQuestion } from '../../Redux/Slice/DataSlice'
 
 
-import {getStorage,getDownloadURL,ref} from "firebase/storage"
+import { getStorage, getDownloadURL, ref } from "firebase/storage"
 import { app } from "../../Firebase/FirebaseAuth";
 
 
-const firestorage=getStorage(app)
+const firestorage = getStorage(app)
 
-const InterviewCard = ({x}) => {
-    const [imageURL, setimageURL] = useState()
-    
-    const navigate=useNavigate()
-    const dispatch=useDispatch()
-  const sendLevel=(level,category)=>{
-    
-    dispatch(getQuestion({level:level,category:category}))
-    navigate("/Question")
-  
+const InterviewCard = ({ x }) => {
+  const [imageURL, setimageURL] = useState()
+  const navigate = useNavigate()
+
+  const sendLevel = (level, category) => { 
+    navigate(`/Question/${level}/${category}`)
   }
   /////featching the image 
 
-const getCategoryImge=(path)=>{
-return getDownloadURL(ref(firestorage,path))
-}
+  const getCategoryImge = (path) => {
+    return getDownloadURL(ref(firestorage, path))
+  }
   useEffect(() => {
-    getCategoryImge(x.projectImage).then((url)=>setimageURL(url))
+    getCategoryImge(x.projectImage).then((url) => setimageURL(url))
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className="max-w-sm bg-white px-6 pt-6 pb-2 rounded-xl shadow-lg transform hover:scale-105 transition duration-500">
       <h3 className="mb-3 text-xl font-bold text-indigo-600 text-center">
-       {x.categoryName} interview questions
+        {x.categoryName} interview questions
       </h3>
       <div className="relative">
         <img
@@ -46,7 +41,7 @@ return getDownloadURL(ref(firestorage,path))
         </p>
       </div>
       <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer text-center">
-      {x.categoryName} interview questions
+        {x.categoryName} interview questions
       </h1>
       <div className="my-4">
         <div className="flex space-x-1 items-center">

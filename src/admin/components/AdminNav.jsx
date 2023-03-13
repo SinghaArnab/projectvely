@@ -2,11 +2,14 @@ import { Link, NavLink, Outlet, useNavigate, useLocation } from 'react-router-do
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 import { app } from '../../Firebase/FirebaseAuth';
 import { singInUser } from '../../Redux/Slice/AuthSlice';
 
 
+
 const auth = getAuth(app);
+const firestore = getFirestore(app)
 
 const AdminNav = () => {
     const { pathname } = useLocation()
@@ -26,8 +29,26 @@ const AdminNav = () => {
             }
         });
         console.log("Admin Nav")
+        getAdminData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+
+
+    const getAdminData = async () => {
+        const userRef = collection(firestore, "Admin");
+        const result = query(userRef, where("Email", "==", userEmail));
+        const Data = await getDocs(result);
+        let admin = [];
+        Data.forEach((element) => admin = [element.data()]);
+        if (admin.length > 0) {
+
+        }
+        else {
+            Navigate("/")
+        }
+    };
+
 
     const logout = () => {
         signOut(auth)
@@ -43,8 +64,8 @@ const AdminNav = () => {
     }
 
     return (
-        <div className="lg:flex lg:max-h-[110vh] ">
-            <section className='w-[20%] max-h-[110vh] hidden md:hidden lg:block  bg-white border-r-[1px] border-cyan-400' >
+        <div className="lg:flex lg:max-h-[110vh] w-screen">
+            <section className='w-[20%] max-h-[110vh] hidden md:hidden lg:block  bg-white border-r-[1px] border-cyan-400 ' >
                 <div className='flex pt-2 px-2 border-b-[1px] mb-10 bg-white'>
                     <div className="flex flex-no-shrink items-center mr-6  text-grey-darkest">
                         <img src="./Logo2.png" className='h-[50px] mix-blend-darken' alt="Educate" />
@@ -91,21 +112,21 @@ const AdminNav = () => {
 
                 </div>
             </section>
-            <section className="relative w-[100%] flex  md:block lg:hidden">
+            <section className="relative flex  md:block lg:hidden w-screen">
 
-                <nav className="nav flex flex-wrap items-center justify-between w-[100%] p-2 bg-white shadow-2xl">
+                <nav className="nav flex flex-wrap items-center justify-between w-screen p-2 bg-white shadow-2xl">
                     <div className='flex pt-2 px-1 bg-white'>
-                    <div className="flex flex-no-shrink items-center mr-6  text-grey-darkest">
-                        <img src="./Logo2.png" className='h-[50px] mix-blend-darken' alt="Educate" />
+                        <div className="flex flex-no-shrink items-center mr-6  text-grey-darkest">
+                            <img src="./Logo2.png" className='h-[50px] mix-blend-darken' alt="Educate" />
+                        </div>
                     </div>
-                </div>
 
                     <input className="menu-btn hidden" type="checkbox" id="menu-btn" />
                     <label className="menu-icon block cursor-pointer md:hidden px-2 py-4 relative select-none" htmlFor="menu-btn">
                         <span className="navicon bg-grey-darkest flex items-center relative"></span>
                     </label>
 
-                    <ul className="menu border-b md:border-none flex justify-end list-reset m-0 w-full md:w-auto">
+                    <ul className="menu border-b md:border-none flex justify-end list-reset m-0 w-screen md:w-auto bg-green-200">
                         <li className="border-t md:border-none ml-0 lg:ml-4" type="checkbox" >
                             <NavLink to="/Dashboard" className="block md:inline-block px-4 py-3 no-underline text-grey-darkest hover:text-grey-darker font-bold">Dashboard</NavLink>
                         </li>
@@ -156,7 +177,7 @@ const AdminNav = () => {
 
             </section>
 
-            <div className='flex flex-col lg:w-[80%] min-h-[100vh] overflow-y-scroll'>
+            <div className='flex flex-col w-screen lg:w-[80%] min-h-[100vh] overflow-y-scroll'>
 
                 <div className='flex flex-col'>
                     <section className='hidden  lg:block min-h-[8.3vh] bg-[#F1F5FB] border-b-[1px]  shadow-md shadow-black/20 dark:shadow-white/20 '>
@@ -171,15 +192,15 @@ const AdminNav = () => {
                             </button>
 
                             {logToggle &&
-                            <ul className='text-gray-700 bg-gray-200 top-12 mr-5 px-2 py-2  absolute flex flex-col gap-2' onMouseLeave={logtoggle}>
-                                <li className={' h-[40px] w-[100%] lg:w-[100%] flex justify-center items-center border-b-[1px] border-black bg-gray-200 hover:bg-gray-400 cursor-pointer lg:ml-0 lg:mt-0'} onClick={()=>Navigate('/Dashboard/profile')}>
-                                <i class="fa-solid fa-user"></i><span className="ml-2">Profile</span>
-                                </li>
-                                <li className={' relative z-40 h-[40px] w-[100%]  flex justify-center items-center text-center lg:w-[100px] bg-gray-200 hover:bg-gray-400 cursor-pointer lg:ml-0 mt-2 lg:mt-0'} onClick={logout}>
-                                <i class="fa-solid fa-right-from-bracket"></i><span className="ml-2">logout</span>
-                                </li>
-                            </ul>
-                               }
+                                <ul className='text-gray-700 bg-gray-200 top-12 mr-5 px-2 py-2  absolute flex flex-col gap-2' onMouseLeave={logtoggle}>
+                                    <li className={' h-[40px] w-[100%] lg:w-[100%] flex justify-center items-center border-b-[1px] border-black bg-gray-200 hover:bg-gray-400 cursor-pointer lg:ml-0 lg:mt-0'} onClick={() => Navigate('/Dashboard/profile')}>
+                                        <i class="fa-solid fa-user"></i><span className="ml-2">Profile</span>
+                                    </li>
+                                    <li className={' relative z-40 h-[40px] w-[100%]  flex justify-center items-center text-center lg:w-[100px] bg-gray-200 hover:bg-gray-400 cursor-pointer lg:ml-0 mt-2 lg:mt-0'} onClick={logout}>
+                                        <i class="fa-solid fa-right-from-bracket"></i><span className="ml-2">logout</span>
+                                    </li>
+                                </ul>
+                            }
                         </div>
                     </section>
                 </div>

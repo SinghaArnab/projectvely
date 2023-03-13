@@ -19,10 +19,10 @@ const CourseDetails = () => {
   useEffect(() => {
     dispatch(courseDetails(courseName))
     console.log("coursedetilas");
-    if (FilterContent) {
-      setconetentData(FilterContent.at(0))
-      console.log("gvasdft");
-    }
+    // if (FilterContent) {
+    //   setconetentData(FilterContent.at(0))
+    //   console.log("gvasdft");
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, conetentData]);
 
@@ -154,10 +154,6 @@ const CourseDetails = () => {
                   </div>
                 </div>
               </div>
-
-
-
-
             </div>
           </div>
         </main>
