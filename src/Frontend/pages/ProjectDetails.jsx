@@ -25,7 +25,7 @@ const ProjectDetails = () => {
   const { CommentsData } = useSelector(
     (state) => state.Comments
   );
-  const findData = ProjectData.find((x) => x.id === projectID );
+  const findData = ProjectData.find((x) => x.id === projectID);
   const dispatch = useDispatch();
 
   console.log(findData);
@@ -41,7 +41,7 @@ const ProjectDetails = () => {
       dispatch(featchcommentData())
     }
     window.scroll(0, 0);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [findData]);
 
   return (
@@ -84,7 +84,12 @@ const ProjectDetails = () => {
                   <p className="inline text-xs font-medium">
                     {state && state.level}
                   </p>
+
+                 
                 </div>
+                <a href={state && state.projectLiveLink} target="_blank" rel="noreferrer" className='w-[40%]'>
+                    <button className="mt-4 text-xl  w-[100%] text-white bg-purple-400 py-2 rounded-xl shadow-lg">Live Demo</button>
+                  </a>
               </div>
             </div>
             <div className="w-full md:w-1/2 ">
@@ -426,25 +431,25 @@ const ProjectDetails = () => {
 
       <div className=" min-h-[50vh] w-[100%] flex justify-center items-start flex-col sm:flex-row  mt-7   ">
 
-          <div className=" sm:w-[85%] w-[100%] min-h-[50vh]   flex justify-center items-start flex-col  ">
+        <div className=" sm:w-[85%] w-[100%] min-h-[50vh]   flex justify-center items-start flex-col  ">
 
-          <PostComments projectId={projectID}/>
-          
+          <PostComments projectId={projectID} />
+
           {
-            CommentsData && CommentsData.filter((x)=>x.projectId===projectID).map((x,index)=>{
-          return(
-            <Comments x={x} key={index}/>
-          )
+            CommentsData && CommentsData.filter((x) => x.projectId === projectID).map((x, index) => {
+              return (
+                <Comments x={x} key={index} />
+              )
 
-          })
-          } 
-
-
+            })
+          }
 
 
-          </div>
 
-          </div>
+
+        </div>
+
+      </div>
 
 
 

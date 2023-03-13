@@ -69,8 +69,8 @@ const CourseDetails = () => {
         <aside
           id="sidebar"
           className={`${toggle === true
-              ? "  bg-gray-800  text-gray-100 md:w-[20%] w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto"
-              : " sm:block hidden  bg-gray-800  text-gray-100 md:w-[20%] w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto "
+              ? "  bg-gray-800  text-gray-100 md:w-[20%] w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto cursor-pointer"
+              : " sm:block hidden  bg-gray-800  text-gray-100 md:w-[20%] w-3/4 space-y-6 pt-6 px-0 absolute inset-y-0 left-0 transform md:relative md:translate-x-0 transition duration-200 ease-in-out  md:flex md:flex-col md:justify-between overflow-y-auto cursor-pointer"
             }`}
           data-dev-hint="sidebar; px-0 htmlFor frameless; px-2 htmlFor visually inset the navigation"
         >
